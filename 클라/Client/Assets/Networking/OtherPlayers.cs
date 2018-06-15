@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class OtherPlayers : MonoBehaviour {
 
+    public static OtherPlayers instance;
 
     public GameObject PlayerPrifab;
     Dictionary<int, OtherPlayer> OPlayers = new Dictionary<int, OtherPlayer>();
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start () {
         NetDataReader.GetInstace().Reder[Class.Player] = (data) => {
@@ -35,7 +41,7 @@ public class OtherPlayers : MonoBehaviour {
                 NetworkObject.mainPlayer.GetComponent<oCreature>().Data_Update(_PlayerStat);
                 NetworkObject.mainPlayer.GetComponent<NetworkObject>().m_CurrentHP.NoEventSet(_PlayerStat.HP);
             }
-            else
+            else if(OPlayers.ContainsKey(_PlayerStat.ID))
             {
                 if (OPlayers[_PlayerStat.ID].GetComponent<oCreature>() == null)
                 {
@@ -46,8 +52,16 @@ public class OtherPlayers : MonoBehaviour {
                 OPlayers[_PlayerStat.ID].gameObject.GetComponent<oCreature>().Data_Update(_PlayerStat);
             }
         };
-
-
-
     }
+
+    public static GameObject GetPlayerObj(int id)
+    {
+        if (id == NetworkObject.mainPlayer.GetComponent<oNetworkManager>().id)
+            return NetworkObject.mainPlayer;
+        return instance.OPlayers[id].gameObject;
+    }
+    
 }
+
+
+

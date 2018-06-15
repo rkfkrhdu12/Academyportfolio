@@ -86,10 +86,19 @@ public class TCPClient : oNetworkManager
                         ByteBuffer bb = new ByteBuffer(incommingData);
                         Base ctype = Base.GetRootAsBase(bb);
                         Debug.Log("받아온 데이터 수.");
+
+                        var Data = ctype;
                         actions.Enqueue(()=>
                         {
-                            Debug.Log("데이터 받음. [" + ctype.CType + "]" + "[" + length + "]");
-                            NetDataReader.GetInstace().Reder[ctype.CType](ctype);
+                            if (NetDataReader.GetInstace().Reder.ContainsKey(Data.CType))
+                            {
+                                Debug.Log("데이터 받음. [" + Data.CType + "]" + "[" + length + "]");
+                                NetDataReader.GetInstace().Reder[Data.CType](Data);
+                            }
+                            else
+                            {
+                                Debug.Log("잘못된 데이터가 옴.\n[" + Data.CType + "]" + "[" + length + "]");
+                            }
                         });
                     }
                 }
@@ -127,7 +136,7 @@ public class TCPClient : oNetworkManager
             {
                 byte[] clientMessageAsByteArray = str;
                 stream.Write(clientMessageAsByteArray, 0, clientMessageAsByteArray.Length);
-                Debug.Log("보낸 데이터 수.");
+                Debug.Log("보낸 데이터 수 ---->");
             }
             else
             {

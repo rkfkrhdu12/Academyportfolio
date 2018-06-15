@@ -3199,7 +3199,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4234574517548916, guid: 30ff7cf5d5359ff42bb289d0f283357f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: -47.4
       objectReference: {fileID: 0}
     - target: {fileID: 4234574517548916, guid: 30ff7cf5d5359ff42bb289d0f283357f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3207,7 +3207,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4234574517548916, guid: 30ff7cf5d5359ff42bb289d0f283357f, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -41.3
       objectReference: {fileID: 0}
     - target: {fileID: 4234574517548916, guid: 30ff7cf5d5359ff42bb289d0f283357f, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5129,6 +5129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1870948734}
   - component: {fileID: 1870948735}
+  - component: {fileID: 1870948736}
   m_Layer: 0
   m_Name: ObjectPool
   m_TagString: Untagged
@@ -5162,6 +5163,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPrifab: {fileID: 1658507777990170, guid: c9f013b579265b64e96da1e2ebade041,
+    type: 2}
+--- !u!114 &1870948736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1870948733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758d0a4de29df6c4d9369c32d77c3d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MonsterPrefab: {fileID: 1668456607403258, guid: 55cb8c819be7a1f4f9cae6344d6ea3cd,
     type: 2}
 --- !u!1 &1940311018
 GameObject:

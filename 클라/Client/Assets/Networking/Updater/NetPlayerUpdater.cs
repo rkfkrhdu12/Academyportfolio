@@ -38,7 +38,7 @@ public class NetPlayerUpdater : UpdaterEvent{
         Player.AddJump(fbb, animator.GetBool("Jump"));
         Player.AddAttack(fbb, animator.GetBool("Attack"));
         Player.AddRun(fbb, animator.GetBool("Run"));
-        
+        Player.AddID(fbb,id);
         return Player.EndPlayer(fbb);
     }
 
