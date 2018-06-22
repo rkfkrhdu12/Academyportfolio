@@ -37,8 +37,8 @@ public class BPlayer : MonoBehaviour
     public CharacterController _charcontrol;
     private void Init()
     {
-        _SkillSlotManager = GameObject.Find("SkillManager").GetComponent<SkillSlotManager>();
-        _InventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
+        //_SkillSlotManager = GameObject.Find("SkillManager").GetComponent<SkillSlotManager>();
+        //_InventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
 
         _charcontrol = transform.GetComponent<CharacterController>();
 

@@ -8,7 +8,6 @@ using FlatBuffers;
 public class oCreature : oObject
 {
     public ReAct<int> CurrentHP = new ReAct<int>();
-    public ReAct<int> CurrentHPOtherEvent = new ReAct<int>();
 
     public int MaximumHP;
 
@@ -17,8 +16,6 @@ public class oCreature : oObject
     
     public int Lv;
     
-    GameObject[] Skill_col_obj;
-
 
     public bool isAttacked { get; set; }
     
@@ -30,6 +27,10 @@ public class oCreature : oObject
         MaximumHP = stat.HPLim;
         MaximumSP = stat.MPLim;
         Lv = stat.LV;
+    }
+    public void Data_Update(MonsterStat stat)
+    {
+        CurrentHP.NoEventSet(stat.HP);
     }
 
 
@@ -46,22 +47,4 @@ public class oCreature : oObject
         Debug.Log("스테미나 " + Value + "만큼 감소.\n남은 스테미나 : " + CurrentSP);
 
     }
-
-    void Start()
-    {
-    }
-
-
-
-    public void StartSkill(GameObject[] obj, float time)
-    {
-        Skill_col_obj = obj;
-        Invoke("StartSkillProcess", time);
-    }
-    void StartSkillProcess()
-    {
-        foreach (GameObject i in Skill_col_obj)
-            i.SetActive(true);
-    }
-
 }

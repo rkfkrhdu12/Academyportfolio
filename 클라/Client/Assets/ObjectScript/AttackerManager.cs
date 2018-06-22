@@ -9,18 +9,36 @@ using System;
 public class AttackObj
 {
     public GameObject[] col;
-    public float Time;
+
+    public float StartTime;
+    public float EndTime;
+    public float AttackTime;
     public float TimeT = 0f;
 
+    public float ColStartTime = 0.1f;
+
+    public bool isTargetOnce = false;
+
+    public float AniCode;
     public int Damage;
     public float CoolTime;
 
     public Action EndCallBack;
+    public Action<oCreature> HitCallBack;
 
     public void setCol(bool _s)
     {
         foreach (var i in col)
             i.SetActive(_s);
+    }
+    public void AttackStart()
+    {
+        foreach (var i in col)
+        {
+            var Option = i.AddComponent<SkillProcess>();
+            Option.HitCallBack = HitCallBack;
+            Option.isOnce = isTargetOnce;
+        }
     }
 }
 
@@ -35,11 +53,12 @@ public class AttackerManager : MonoBehaviour
     public void CallAttack(AttackObj obj)
     {
         var _obj = obj;
+        _obj.TimeT = 0f;
+
         objs[_obj] = () =>
         {
-            GetComponentInChildren<Animator>().SetFloat("stat", 0.2f);
-            obj.TimeT += Time.deltaTime;
-            if (_obj.TimeT >= _obj.Time)
+            _obj.TimeT += Time.deltaTime;
+            if (_obj.TimeT >= _obj.AttackTime)
             {
                 RemoveManager.Enqueue(_obj);
                 _obj.setCol(false);
@@ -47,7 +66,9 @@ public class AttackerManager : MonoBehaviour
             }
         };
 
-        obj.setCol(true);
+
+        _obj.setCol(true);
+        _obj.AttackStart();
     }
 
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MonsterAttackManager : MonoBehaviour
 {
@@ -10,35 +11,61 @@ public class MonsterAttackManager : MonoBehaviour
 
     public AttackObj CurrentAtk;
 
-    bool isAttack = false;
 
-    private void OnTriggerEnter(Collider other)
+    public bool isAttackAble = true;
+
+    private void OnTriggerStay(Collider other)
     {
-        if (other.GetComponent<oCreature>() && !isAttack)
+        if (other.GetComponent<oCreature>() && isAttackAble)
         {
+            isAttackAble = false;
             AttackRange.SetActive(false);
-            isAttack = true;
             // ======== 스킬.
             var skill = new AttackObj();
             CurrentAtk = skill;
             skill.col = new GameObject[1];
             skill.col[0] = col;
-            skill.Time = 1f;
+            skill.isTargetOnce = false;
+
+            skill.StartTime = 0.6f;
+            skill.EndTime = 2.1f;
+            skill.AttackTime = 0.25f;
+
+            skill.AniCode = 0.2f;
+
             skill.Damage = 10;
+
+            skill.HitCallBack = (data) =>
+            {
+                if (data.gameObject == NetworkObject.mainPlayer)
+                {
+                    Debug.Log("Hit");
+                    data.gameObject.GetComponent<NetworkObject>().m_CurrentHP.Value -= CurrentAtk.Damage;
+                }
+            };
             skill.EndCallBack = () =>
             {
                 AttackRange.SetActive(true);
-                isAttack = false;
+                StartCoroutine(Wait(() => {  isAttackAble = true; }, skill.EndTime - skill.StartTime + skill.AttackTime));
             };
             // ======= 임시 스킬 생성.
-            GetComponent<AttackerManager>().CallAttack(skill);
+            
+            GetComponentInChildren<Animator>().SetFloat("stat", skill.AniCode);
+            StartCoroutine(Wait(() => { GetComponent<AttackerManager>().CallAttack(skill); }, skill.StartTime));
         }
-        else if(isAttack)
-        {
-            if(other.gameObject == NetworkObject.mainPlayer)
-            {
-                other.gameObject.GetComponent<NetworkObject>().m_CurrentHP.Value -= CurrentAtk.Damage;
-            }
-        }
+    }
+
+    void Start()
+    {
+        
+    }
+
+
+   
+
+    IEnumerator Wait(Action action, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        action();
     }
 }

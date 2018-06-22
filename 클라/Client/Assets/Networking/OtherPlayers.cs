@@ -24,8 +24,8 @@ public class OtherPlayers : MonoBehaviour {
                     var obj = Instantiate(PlayerPrifab, Vector3.zero, Quaternion.identity);
                     obj.AddComponent<OtherPlayer>();
                     obj.AddComponent<oNetworkIdentity>().id = m_player.ID;
+                    obj.GetComponent<oNetworkIdentity>().type = oNetworkIdentity.ObjType.player;
                     OPlayers[m_player.ID] = obj.GetComponent<OtherPlayer>();
-                    Debug.Log(m_player.ID);
                     SendToMe_PlayerStat.Send(m_player.ID);
                 }
 

@@ -21,7 +21,7 @@ public class NetHP_Bar : MonoBehaviour {
 
                 HPBar.GetComponent<RectTransform>().sizeDelta = new Vector2(size * 0.02f, 0.14f);
             };
-
+            action();
             GetComponentInParent<oCreature>().CurrentHP.AddEvent(action);
             GetComponentInParent<oCreature>().CurrentHP.OtherEvent(action);
             GetComponent<NetHP_Bar>().enabled = false;

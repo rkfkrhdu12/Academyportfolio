@@ -5,21 +5,31 @@ using FlatBuffers;
 
 public class NetStatUpdater{
     
-    public void Updater (GameObject Player) {
+    public void Updater (GameObject Obj) {
+        int id = Obj.GetComponent<oNetworkIdentity>().id;
+        oCreature oCreature = Obj.GetComponent<oCreature>();
 
-
-        int id = Player.GetComponent<oNetworkIdentity>().id;
-        oCreature oCreature = Player.GetComponent<oCreature>();
-        
         var fbb = new FlatBufferBuilder(1);
-        fbb.Finish(PlayerStat.CreatePlayerStat(fbb, Class.PlayerStat, 
-            oCreature.CurrentHP.Value, 
-            oCreature.MaximumHP , 
-            oCreature.CurrentSP , 
-            oCreature.MaximumSP , 
-            oCreature.Lv, id
-            ).Value);
+
+        if (Obj.GetComponent<oNetworkIdentity>().type == oNetworkIdentity.ObjType.monster)
+        {
+            fbb.Finish(MonsterStat.CreateMonsterStat(fbb,Class.MonsterStat,
+                oCreature.CurrentHP.Value,
+                id
+                ).Value);
+        }
+        else if (Obj.GetComponent<oNetworkIdentity>().type == oNetworkIdentity.ObjType.player)
+        {
+            fbb.Finish(PlayerStat.CreatePlayerStat(fbb, Class.PlayerStat,
+                oCreature.CurrentHP.Value,
+                oCreature.MaximumHP,
+                oCreature.CurrentSP,
+                oCreature.MaximumSP,
+                oCreature.Lv, id
+                ).Value);
+        }
 
         TCPClient.Instance.Send(fbb.SizedByteArray());
+
     }
 }
