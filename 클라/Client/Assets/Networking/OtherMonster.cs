@@ -17,6 +17,8 @@ public class OtherMonster : MonoBehaviour
 
     NetStatUpdater netMonsterStat = new NetStatUpdater();
 
+    bool TargetInRange = true;
+
     public void PosUpdate(Monster mon)
     {
         Vec3 pos = mon.Pos.Value;
@@ -44,8 +46,20 @@ public class OtherMonster : MonoBehaviour
         if (GUI.Button(new Rect(10,10,200,100),"-HP"))
         {
             GetComponent<oCreature>().CurrentHP.Value -= 10;
-            Debug.Log(""+ GetComponent<oCreature>().CurrentHP.Value);
         }
+    }
+
+    void Start()
+    {
+        var Ev = GetComponentInChildren<TriggerEvent>();
+        Ev.triggerEnter.Add(() =>
+        {
+            TargetInRange = false;
+        });
+        Ev.triggerExit.Add(() =>
+        {
+            TargetInRange = true;
+        });
     }
 
     void Update()
@@ -55,6 +69,9 @@ public class OtherMonster : MonoBehaviour
         LerpManager.SyncT += Time.deltaTime;
 
         transform.position = Vector3.Lerp(StartPos, End, LerpManager.LerpT());
-        transform.rotation = Quaternion.Lerp(currentRot, transform.GetChild(0).rotation, LerpManager.LerpT());
+        if(TargetInRange)
+            transform.rotation = Quaternion.Lerp(currentRot, transform.GetChild(0).rotation, LerpManager.LerpT());
+        else
+            transform.LookAt(lookpos);
     }
 }

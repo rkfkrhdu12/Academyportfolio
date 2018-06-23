@@ -13,10 +13,10 @@ public class MonsterAttackManager : MonoBehaviour
 
 
     public bool isAttackAble = true;
-
+    
     private void OnTriggerStay(Collider other)
     {
-        if (other.GetComponent<oCreature>() && isAttackAble)
+        if (other.gameObject.GetComponent<oCreature>() && isAttackAble)
         {
             isAttackAble = false;
             AttackRange.SetActive(false);
@@ -25,7 +25,7 @@ public class MonsterAttackManager : MonoBehaviour
             CurrentAtk = skill;
             skill.col = new GameObject[1];
             skill.col[0] = col;
-            skill.isTargetOnce = false;
+            skill.isTargetOnce = true;
 
             skill.StartTime = 0.6f;
             skill.EndTime = 2.1f;
@@ -39,8 +39,7 @@ public class MonsterAttackManager : MonoBehaviour
             {
                 if (data.gameObject == NetworkObject.mainPlayer)
                 {
-                    Debug.Log("Hit");
-                    data.gameObject.GetComponent<NetworkObject>().m_CurrentHP.Value -= CurrentAtk.Damage;
+                    data.gameObject.GetComponent<oCreature>().Hit(CurrentAtk.Damage, data);
                 }
             };
             skill.EndCallBack = () =>

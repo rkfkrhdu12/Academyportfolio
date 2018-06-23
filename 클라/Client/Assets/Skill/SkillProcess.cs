@@ -5,10 +5,8 @@ using System;
 
 public class SkillProcess : MonoBehaviour {
     public bool isOnce { get; set; }
-    public Action<oCreature> HitCallBack { get; set; }
+    public Action<Collider> HitCallBack { get; set; }
     
-    oCreature ThisCreature;
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,13 +15,9 @@ public class SkillProcess : MonoBehaviour {
         {
             if (other.gameObject.GetComponent<oCreature>() != GetComponentInParent<oCreature>())
             {
-                if (other.gameObject.GetComponent<oCreature>() != ThisCreature)
-                {
-                    ThisCreature = other.gameObject.GetComponent<oCreature>();
-                    HitCallBack(ThisCreature);
-                }
+                HitCallBack(other);
             }
-            if (isOnce) gameObject.SetActive(false);
+            if (isOnce) { gameObject.SetActive(false); }
         }
     }
 }

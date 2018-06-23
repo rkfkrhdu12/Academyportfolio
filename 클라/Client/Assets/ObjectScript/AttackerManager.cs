@@ -24,7 +24,7 @@ public class AttackObj
     public float CoolTime;
 
     public Action EndCallBack;
-    public Action<oCreature> HitCallBack;
+    public Action<Collider> HitCallBack;
 
     public void setCol(bool _s)
     {
@@ -35,7 +35,7 @@ public class AttackObj
     {
         foreach (var i in col)
         {
-            var Option = i.AddComponent<SkillProcess>();
+            var Option = i.GetComponent<SkillProcess>();
             Option.HitCallBack = HitCallBack;
             Option.isOnce = isTargetOnce;
         }
