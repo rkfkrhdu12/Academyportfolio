@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 54343180701247676}
   - component: {fileID: 114312133471830224}
   - component: {fileID: 114874406602153132}
+  - component: {fileID: 114277406142440164}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1488,7 +1489,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1383546956252018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: -47.4, y: 0, z: -41.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4457856812578640}
@@ -2445,6 +2446,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63d983a54bf5f8045932bdeaac692030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114277406142440164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1383546956252018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91dd186764034ed49a4a5a57e15dc9fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  type: 0
 --- !u!114 &114312133471830224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2472,6 +2486,7 @@ MonoBehaviour:
   CurrentSP: 10
   MaximumSP: 10
   Lv: 1
+  bloodEffect: {fileID: 0}
 --- !u!114 &114825622971174240
 MonoBehaviour:
   m_ObjectHideFlags: 1

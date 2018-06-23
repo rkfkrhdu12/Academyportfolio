@@ -24,7 +24,7 @@ public class AttackObj
     public float CoolTime;
 
     public Action EndCallBack;
-    public Action<Collider> HitCallBack;
+    public Action<Collider, Collider> HitCallBack;
 
     public void setCol(bool _s)
     {

@@ -12,9 +12,8 @@ public class OtherMonster : MonoBehaviour
     Vector3 StartPos = new Vector3();
 
     Vector3 lookpos = Vector3.zero;
-    Quaternion currentRot = new Quaternion();
 
-
+    Vector3 dirToTarget;
     NetStatUpdater netMonsterStat = new NetStatUpdater();
 
     bool TargetInRange = true;
@@ -29,8 +28,8 @@ public class OtherMonster : MonoBehaviour
         if (GetComponent<MonsterAttackManager>().AttackRange.activeSelf)
             GetComponentInChildren<Animator>().SetFloat("stat", mon.Ani);
 
+        dirToTarget = lookpos - transform.position;
         StartPos = transform.position;
-        currentRot = transform.rotation;
         LerpManager.LerpPos(ref End, Vector3.zero);
     }
     public void SetStatEvent()
@@ -64,14 +63,15 @@ public class OtherMonster : MonoBehaviour
 
     void Update()
     {
-        transform.GetChild(0).LookAt(lookpos);
-
         LerpManager.SyncT += Time.deltaTime;
+        
 
         transform.position = Vector3.Lerp(StartPos, End, LerpManager.LerpT());
-        if(TargetInRange)
-            transform.rotation = Quaternion.Lerp(currentRot, transform.GetChild(0).rotation, LerpManager.LerpT());
-        else
-            transform.LookAt(lookpos);
+        
+        Vector3 look = Vector3.Slerp(transform.forward, dirToTarget.normalized, LerpManager.LerpT());
+
+        if (transform.position != lookpos) {
+            transform.rotation = Quaternion.LookRotation(look, Vector3.up);
+        }
     }
 }

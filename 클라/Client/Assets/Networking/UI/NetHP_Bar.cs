@@ -24,6 +24,7 @@ public class NetHP_Bar : MonoBehaviour {
             action();
             GetComponentInParent<oCreature>().CurrentHP.AddEvent(action);
             GetComponentInParent<oCreature>().CurrentHP.OtherEvent(action);
+            gameObject.AddComponent<LookCam>();
             GetComponent<NetHP_Bar>().enabled = false;
         }
     }
