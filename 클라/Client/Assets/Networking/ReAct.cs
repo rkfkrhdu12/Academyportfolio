@@ -20,12 +20,23 @@ public class ReAct<T>{
             {
                 i();
             }
+            Event();
         }
 
     }
+    public Action Event = ()=>{ };
+
     List<Action> eList = new List<Action>();
     List<Action> OeList = new List<Action>();
 
+    public ReAct(T value)
+    {
+        _Value = value;
+    }
+    public ReAct()
+    {
+        _Value = default(T);
+    }
     public void AddEvent(Action a)
     {
         eList.Add(a);
@@ -34,6 +45,11 @@ public class ReAct<T>{
     {
         OeList.Add(a);
     }
+
+
+
+
+
     public void NoEventSet(T val)
     {
         _Value = val;

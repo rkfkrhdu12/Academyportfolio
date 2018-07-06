@@ -14,6 +14,7 @@ public class AttackObj
     public float EndTime;
     public float AttackTime;
     public float TimeT = 0f;
+    public string EffectName ="none";
 
     public float ColStartTime = 0.1f;
 
@@ -38,6 +39,7 @@ public class AttackObj
             var Option = i.GetComponent<SkillProcess>();
             Option.HitCallBack = HitCallBack;
             Option.isOnce = isTargetOnce;
+            Option.EffectName = EffectName;
         }
     }
 }

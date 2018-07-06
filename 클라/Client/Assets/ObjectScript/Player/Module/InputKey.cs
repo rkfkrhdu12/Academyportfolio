@@ -35,23 +35,6 @@ public class InputKey : Module
         {
             _player._list[(int)eModCount.MOVE].Jump();
         }
-        // Attack
-        if (Input.GetMouseButtonDown(0) && !_player._isAttack)
-        {
-            _player._isAttack = true;
-        }
-
-        // Inventory
-        if (Input.GetKeyDown(KeyCode.I) && _player._InventoryManager._Object.activeSelf)
-        {
-            _player._isCamera = true;
-            _player._InventoryManager._Object.SetActive(false);
-        }
-        else if (Input.GetKeyDown(KeyCode.I) && !_player._InventoryManager._Object.activeSelf)
-        {
-            _player._isCamera = false;
-            _player._InventoryManager._Object.SetActive(true);
-        }
     }
  
 }

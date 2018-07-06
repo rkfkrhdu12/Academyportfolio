@@ -24,22 +24,22 @@ public class BPlayer : MonoBehaviour
     public float _jumpPower = 2;
 
     public bool _isMove = true;
+    public bool _isMoveable = true;
     public bool _isJump = false;
     public bool _isAttack = false;
     public bool _isCamera = true;
     public bool _isRun = false;
 
+    public float _SkillProgressTime = 1f;
+
     public List<Module> _list = new List<Module>();
 
-
-    public UIManager _SkillSlotManager;
-    public UIManager _InventoryManager;
     public CharacterController _charcontrol;
+
+    public static BPlayer MainPlayer;
+
     private void Init()
     {
-        //_SkillSlotManager = GameObject.Find("SkillManager").GetComponent<SkillSlotManager>();
-        //_InventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
-
         _charcontrol = transform.GetComponent<CharacterController>();
 
         Module[] module = new Module[5];
@@ -57,6 +57,8 @@ public class BPlayer : MonoBehaviour
     void Start()
     {
         Init();
+
+        MainPlayer = this;
 
         foreach (Module i in _list)
             i.Init(this);

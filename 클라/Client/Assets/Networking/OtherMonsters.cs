@@ -35,7 +35,7 @@ public class OtherMonsters : MonoBehaviour {
                 if (Monsters[_MonsterStat.ID].GetComponent<oCreature>() == null)
                 {
                     Monsters[_MonsterStat.ID].gameObject.AddComponent<oCreature>();
-                    Monsters[_MonsterStat.ID].gameObject.GetComponent<oCreature>().MaximumHP = 100;
+                    Monsters[_MonsterStat.ID].gameObject.GetComponent<oCreature>().MaximumHP = 200;
                     Monsters[_MonsterStat.ID].gameObject.GetComponent<OtherMonster>().SetStatEvent();
                 }
 

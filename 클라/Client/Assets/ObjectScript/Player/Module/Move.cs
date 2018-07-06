@@ -6,8 +6,10 @@ public class Move : Module
 {
     public override void Update()
     {
-        JumpUpdate();
-        MoveUpdate();
+        if (_player._isMoveable) {
+            JumpUpdate();
+            MoveUpdate();
+        }
     }
     
     // Jump

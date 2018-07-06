@@ -16,7 +16,7 @@ public class OtherMonster : MonoBehaviour
     Vector3 dirToTarget;
     NetStatUpdater netMonsterStat = new NetStatUpdater();
 
-    bool TargetInRange = true;
+    //bool TargetInRange = true;
 
     public void PosUpdate(Monster mon)
     {
@@ -39,26 +39,17 @@ public class OtherMonster : MonoBehaviour
             netMonsterStat.Updater(gameObject);
         });
     }
-
-    void OnGUI()
-    {
-        if (GUI.Button(new Rect(10,10,200,100),"-HP"))
-        {
-            GetComponent<oCreature>().CurrentHP.Value -= 10;
-        }
-    }
-
     void Start()
     {
-        var Ev = GetComponentInChildren<TriggerEvent>();
-        Ev.triggerEnter.Add(() =>
-        {
-            TargetInRange = false;
-        });
-        Ev.triggerExit.Add(() =>
-        {
-            TargetInRange = true;
-        });
+        //var Ev = GetComponentInChildren<TriggerEvent>();
+        //Ev.triggerEnter.Add(() =>
+        //{
+        //    TargetInRange = false;
+        //});
+        //Ev.triggerExit.Add(() =>
+        //{
+        //    TargetInRange = true;
+        //});
     }
 
     void Update()

@@ -20,8 +20,8 @@ public class Ani : Module
     
     public void MoveUpdate()
     {
-            animator.SetFloat("Vertical", _player._forwardSpeed);
-            animator.SetFloat("Horizontal", _player._sideSpeed);
+        animator.SetFloat("Vertical", _player._forwardSpeed);
+        animator.SetFloat("Horizontal", _player._sideSpeed);
     }
 
     public void JumpUpdate()
@@ -31,7 +31,7 @@ public class Ani : Module
 
     public void AttackUpdate()
     {
-        animator.SetBool("Attack", _player._isAttack);
+        //animator.SetBool("Attack", _player._isAttack);
     }
 
     public void RunUpdate()

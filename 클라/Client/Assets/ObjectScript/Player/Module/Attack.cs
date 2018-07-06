@@ -9,15 +9,15 @@ public class Attack : Module
         AttackUpdate();
     }
     
-    float _currentTime = 0.0f;
+    float _currentTime = 0;
     void AttackUpdate()
     {
         if (_player._isAttack)
         {
             _currentTime += Time.deltaTime;
-            if (_currentTime >= 1f)
+            if (_currentTime >= _player._SkillProgressTime)
             {
-                _currentTime = 0.0f;
+                _currentTime = 0;
                 _player._isAttack = false;
             }
         }

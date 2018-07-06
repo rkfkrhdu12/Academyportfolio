@@ -5,21 +5,31 @@ using UnityEngine.UI;
 
 public class Info : MonoBehaviour
 {
-    public GameObject _InfoBox;
-    public Text _Infotext;
+    public static Info info;
 
-    public bool _isActive = false;
+    public GameObject _InfoBox;
     
-    void Update()
+    // 싱글턴 선언 //
+    void Awake(){ info = this; }
+
+    public static void ViewThis(Slot slot)
     {
-        if (_isActive)
-        {
-            _InfoBox.SetActive(true);
-            _InfoBox.GetComponent<Transform>().position = Input.mousePosition;
-        }
+        On();
+        if (!slot.Empty)
+            info._InfoBox.GetComponentInChildren<Text>().text = 
+                slot.Item._name + "\n\n" + slot.Item._info;
         else
-        {
-            _InfoBox.SetActive(false);
-        }
+            info._InfoBox.GetComponentInChildren<Text>().text = "빈슬롯.";
+    }
+
+    public static void On()
+    {
+        info._InfoBox.GetComponent<Transform>().position = Input.mousePosition;
+        info._InfoBox.SetActive(true);
+        info._InfoBox.transform.SetAsLastSibling();
+    }
+    public static void Off()
+    {
+        info._InfoBox.SetActive(false);
     }
 }
