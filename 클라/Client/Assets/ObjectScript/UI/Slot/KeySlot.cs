@@ -13,22 +13,15 @@ public class KeySlot : Slot {
     {
         base.SlotStart();
         type = SlotType.Key;
-    }
-
-    void Update () {
-        if (!Empty)
+        item.Event += () =>
         {
             if (Mouse)
             {
-                if (Input.GetMouseButtonDown(MousePoint))
-                {
-                    Item.process();
-                }
+                GetComponentInParent<KeySettingManager>().MouseButton[MousePoint] =  Item.process;
             }
-            else if (Input.GetKey(key))
-            {
-                Item.process();
+            else{
+                GetComponentInParent<KeySettingManager>().KeyEvent[key] = Item.process;
             }
-        }
+        };
     }
 }

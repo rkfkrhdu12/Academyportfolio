@@ -23,8 +23,8 @@ public class BPlayer : MonoBehaviour
     public float _gravityAccel = -20;
     public float _jumpPower = 2;
 
-    public bool _isMove = true;
-    public bool _isMoveable = true;
+    public bool _isMoveAble = true;
+    public bool _isMove = false;
     public bool _isJump = false;
     public bool _isAttack = false;
     public bool _isCamera = true;
@@ -38,7 +38,7 @@ public class BPlayer : MonoBehaviour
 
     public static BPlayer MainPlayer;
 
-    private void Init()
+    void Init()
     {
         _charcontrol = transform.GetComponent<CharacterController>();
 
@@ -54,11 +54,14 @@ public class BPlayer : MonoBehaviour
             _list.Add(j);
     }
 
+    void Awake()
+    {
+        MainPlayer = this;
+    }
+
     void Start()
     {
         Init();
-
-        MainPlayer = this;
 
         foreach (Module i in _list)
             i.Init(this);

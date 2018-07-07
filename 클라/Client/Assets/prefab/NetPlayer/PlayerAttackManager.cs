@@ -11,16 +11,16 @@ public class PlayerAttackManager : MonoBehaviour {
     
     public void Attacked(AttackObj skill)
     {
-        if (isAttackAble)
+        if (isAttackAble && !BPlayer.MainPlayer._isMove)
         {
             isAttackAble = false;
-            GetComponent<BPlayer>()._isMoveable = false;
+            GetComponent<BPlayer>()._isMoveAble = false;
             skill.col = new GameObject[1];
             skill.col[0] = col;
             skill.EndCallBack = () =>
             {
                 StartCoroutine(Wait(() => {
-                    GetComponent<BPlayer>()._isMoveable = true;
+                    GetComponent<BPlayer>()._isMoveAble = true;
                     isAttackAble = true;
                     GetComponent<Animator>().SetBool("Attack", false);
                 }, skill.EndTime - skill.StartTime + skill.AttackTime));

@@ -17,7 +17,7 @@ public class InputKey : Module
         }
 
         // Move
-        if (_player._isMove)
+        if (_player._isMoveAble)
         {
             _player._forwardSpeed = Input.GetAxis("Vertical");
             _player._forwardSpeed = Mathf.Clamp(_player._forwardSpeed, -_player._MaxforwardSpeed, _player._MaxforwardSpeed);
@@ -27,11 +27,10 @@ public class InputKey : Module
 
             _player._sideSpeed = Input.GetAxis("Horizontal");
             _player._sideSpeed = Mathf.Clamp(_player._sideSpeed, -_player._MaxsideSpeed, _player._MaxsideSpeed);
-
         }
 
         // Jump
-        if (Input.GetKeyDown(KeyCode.Space))// && _player.GetComponent<CharacterController>().isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             _player._list[(int)eModCount.MOVE].Jump();
         }

@@ -12,7 +12,7 @@ public class Slot : MonoBehaviour
         Skill, Item, Key
     }
 
-    ReAct<PlayerSystem> item = new ReAct<PlayerSystem>();
+    public ReAct<PlayerSystem> item = new ReAct<PlayerSystem>();
     [SerializeField] Text number_text;
 
     public PlayerSystem Item
@@ -123,6 +123,7 @@ public class Slot : MonoBehaviour
         icon_Obj.transform.localPosition = Vector2.zero;
         GetComponent<BoxCollider2D>().offset = Vector2.zero;
         TargetSlot = null;
+        SetSlot();
         Info.Off();
     }
     void ItemSwap()

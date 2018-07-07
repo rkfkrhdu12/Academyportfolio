@@ -7,8 +7,8 @@ public class SkillManager : MonoBehaviour
     public void Start()
     {
         BSkill skill1 = new BSkill();
-        BSkill skill2 = new BSkill();
-        BSkill skill3 = new BSkill();
+        SystemSkill skill2 = new SystemSkill();
+        SystemSkill skill3 = new SystemSkill();
 
         skill1._name = "스킬1";
         skill1._info = "스킬이다.";
@@ -26,13 +26,25 @@ public class SkillManager : MonoBehaviour
 
 
 
-        skill2._name = "스킬2";
-        skill2._info = "스킬이다.";
+        skill2._name = "KetSetting창 열기";
+        skill2._info = "Open the KeySetting Window.";
         skill2.icon = Resources.Load<Sprite>("ex_Skill");
 
-        skill3._name = "스킬3";
-        skill3._info = "스킬이다.";
+        skill2.SkillData = new AttackObj();
+        skill2.SkillData.EndCallBack = ()=>{
+            GameObject win = BPlayer.MainPlayer.GetComponent<PlayerSystemManager>().KeySetting_WIN;
+            win.SetActive(!win.activeSelf);
+        };
+
+        skill3._name = "Item창 열기";
+        skill3._info = "Open the Item Window.";
         skill3.icon = Resources.Load<Sprite>("ex_Skill");
+
+        skill3.SkillData = new AttackObj();
+        skill3.SkillData.EndCallBack = () => {
+            GameObject win = BPlayer.MainPlayer.GetComponent<PlayerSystemManager>().Item_WIN;
+            win.SetActive(!win.activeSelf);
+        };
 
 
         SkillsManager.AddSkill(skill1);
