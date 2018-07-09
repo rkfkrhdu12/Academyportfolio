@@ -617,3 +617,7 @@ C:\Users\anyc1\OneDrive\바탕 화면\atents\atentsfile\ServerTest\Temp\bin\Debu
 C:\Users\anyc1\OneDrive\바탕 화면\atents\atentsfile\ServerTest\Temp\bin\Debug\UnityEngine.LocalizationModule.xml
 C:\Users\anyc1\OneDrive\바탕 화면\atents\atentsfile\ServerTest\Temp\bin\Debug\UnityEngine.ProfilerModule.xml
 C:\Users\anyc1\OneDrive\바탕 화면\atents\atentsfile\ServerTest\Temp\bin\Debug\UnityEngine.StreamingModule.xml
+C:\Users\rkfkr\Documents\GitHub\Academyportfolio\클라\Client\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\rkfkr\Documents\GitHub\Academyportfolio\클라\Client\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\rkfkr\Documents\GitHub\Academyportfolio\클라\Client\obj\Debug\Assembly-CSharp.dll
+C:\Users\rkfkr\Documents\GitHub\Academyportfolio\클라\Client\obj\Debug\Assembly-CSharp.pdb
