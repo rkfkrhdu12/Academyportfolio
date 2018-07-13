@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : State
+public class IdleState : MonoBehaviour
 {
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    private Camera mainCamera;
+    public Camera mainCamera;
     private bool _isCamera;
 
     public void Update()

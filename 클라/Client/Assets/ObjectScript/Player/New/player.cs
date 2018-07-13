@@ -2,44 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum eState
-{
-    IDLE,
-    MOVE,
-    ATTACK,
-}
-public enum eMove
-{
-    STOP,
-    MOVE,
-    RUN,
-}
+//public enum eState
+//{
+//    IDLE,
+//    MOVE,
+//    ATTACK,
+//}
+//public enum eMove
+//{
+//    STOP,
+//    MOVE,
+//    RUN,
+//    JUMP,
+//}
 
-public struct behavior
-{
-    public float forward;
-    public float maxForward;// .3
-    public float side;
-    public float maxSide; // .2
-
-    public bool IsJump;
-    public float gravityPower;
-    #region operator
-    public static bool operator ==(behavior a, behavior b)
-    {
-        if (a.forward == b.forward && a.side == b.side) return true;
-        else return false;
-    }
-    public static bool operator !=(behavior a, behavior b)
-    {
-        if (a.forward != b.forward && a.side != b.side) return true;
-        else return false;
-    }
-    public override int GetHashCode() { return base.GetHashCode(); }
-    public override bool Equals(object obj) { return base.Equals(obj); }
-#endregion
-    //public float jumpPower; // 2
-}
+   
 
 public class player : MonoBehaviour
 {
@@ -56,21 +33,44 @@ public class player : MonoBehaviour
     }
     #endregion
 
-    public List<State> stateL = new List<State>();
-    public eState curState = eState.IDLE;
-    public eMove curMove = eMove.STOP;
+    //public List<State> stateL = new List<State>();
+    //public eState curState = eState.IDLE;
+    //public eMove curMove = eMove.STOP;
+
+    //public behavior speed;
+
+    
+
+    //private void Update()
+    //{
+    //    stateL[(int)curState].Update();
+    //}
+
+    public float forward;
+    public float side;
+    public float maxForward;// .3
+    public float maxSide; // .2
+
+    public bool IsJump;
+    public float gravityPower;
+    
+    public float jumpPower; // 2
+
     public CharacterController charCtrl;
-
-    public behavior speed;
-
     private void Start()
     {
+        // Behavior Init
+        maxForward = .3f;
+        maxSide = .2f;
+        jumpPower = 2;
+        
+        // CharacterController Init
         charCtrl = transform.GetComponent<CharacterController>();
     }
-    
+
     private void Update()
     {
-        stateL[(int)curState].Update();
+        
     }
-    
+
 }

@@ -16,17 +16,22 @@ public class InputKeyManager : MonoBehaviour
     }
     #endregion
 
-    public InputKeyBoard inputkey;
+    //public eMove playerMove;
+    //public InputKeyBoard inputkey;
 
-    private void Start()
-    {
-        inputkey = new InputKeyBoard();
+    //private void Start()
+    //{
+    //    inputkey = new InputKeyBoard();
 
-        inputkey.Start();
-    }
+    //    inputkey.Start();
+    //}
 
-    void Update()
-    {
-        inputkey.Update();
-    }
+    //void Update()
+    //{
+    //    playerMove = eMove.STOP;
+
+    //    inputkey.MoveUpdate();
+
+    //    player.GetInstance().curMove = playerMove;
+    //}
 }
