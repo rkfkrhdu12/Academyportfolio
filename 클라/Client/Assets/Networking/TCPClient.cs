@@ -84,6 +84,8 @@ public class TCPClient : oNetworkManager
                         var incommingData = new byte[length];
                         Array.Copy(bytes, 0, incommingData, 0, length);
                         ByteBuffer bb = new ByteBuffer(incommingData);
+
+
                         Base ctype = Base.GetRootAsBase(bb);
                         //Debug.Log("받아온 데이터 수.");
 

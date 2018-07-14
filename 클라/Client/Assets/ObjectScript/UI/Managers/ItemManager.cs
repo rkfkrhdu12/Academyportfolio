@@ -31,8 +31,10 @@ public class ItemManager : MonoBehaviour
 
         stuff._name = "포션";
         stuff._info = "기본포션이다.";
-        stuff.Number.Value = 3;
+        stuff.Number.Value = 5;
+        stuff.Hp = 10;
         stuff.icon = icon_3;
+        
 
 
 

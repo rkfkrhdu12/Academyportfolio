@@ -27,7 +27,7 @@ public class NetStatUpdater{
                 oCreature.MaximumSP,
                 oCreature.Lv, id
                 ).Value);
-        }
+        } 
 
         TCPClient.Instance.Send(fbb.SizedByteArray());
 

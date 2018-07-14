@@ -42,12 +42,12 @@ public class BPlayer : MonoBehaviour
     {
         _charcontrol = transform.GetComponent<CharacterController>();
 
-        Module[] module = new Module[4];
+        Module[] module = new Module[5];
         int i = 0;
         module[i++] = new Move();
         module[i++] = new Attack();
         module[i++] = new Ani();
-        //module[i++] = new CameraRot();
+        module[i++] = new CameraRot();
         module[i++] = new InputKey();
 
         foreach (Module j in module)

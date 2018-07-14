@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class ItemSlot : Slot
 {
+
+    public override void OnMouseRCilck()
+    {
+        base.OnMouseRCilck();
+    }
+
     public override void SlotStart()
     {
         base.SlotStart();

@@ -21,5 +21,10 @@ public class Armor : BItem
 
 public class Stuff : BItem
 {
-
+    public override void process()
+    {
+        BPlayer.MainPlayer.GetComponent<NetworkObject>().m_CurrentHP.Value += Hp;
+        Number.Value -= 1;
+    }
+    public int Hp { get; set; }
 }

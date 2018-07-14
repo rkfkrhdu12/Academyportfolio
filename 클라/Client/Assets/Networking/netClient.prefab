@@ -61,11 +61,13 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1708068097926552}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00418ed384c1515479e61fa00fcf4f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SendRate: 0
+  LoginUI: {fileID: 0}
   t:
   - {fileID: 0}
   - {fileID: 0}

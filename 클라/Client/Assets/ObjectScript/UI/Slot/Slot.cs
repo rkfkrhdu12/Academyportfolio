@@ -31,7 +31,7 @@ public class Slot : MonoBehaviour
         get
         {
             if (item.Value == null) return true;
-            else                    return false;
+            else return false;
         }
     }
 
@@ -41,16 +41,17 @@ public class Slot : MonoBehaviour
     static bool IsMouseOn;
 
     public Slot TargetSlot;
-    
+
+
     void Start()
     {
         SlotStart();
     }
 
-    void SetItemNumber()
+    public void SetItemNumber()
     {
         if (number > 1) number_text.text = "" + number;
-        else            number_text.text = "";
+        else number_text.text = "";
     }
 
     void ShowIcon(float a)
@@ -64,6 +65,14 @@ public class Slot : MonoBehaviour
         {
             ShowIcon(0.6f);
             SetItemNumber();
+            Item.Number.Event = () =>
+            {
+                if (number == 0)
+                    Item = null;
+                else
+                    SetItemNumber();
+
+            };
             icon_Obj.GetComponent<Image>().sprite = Item.icon;
         }
         else
@@ -73,13 +82,16 @@ public class Slot : MonoBehaviour
         }
     }
 
-    public void EvEnter(){
-        if(!IsMouseOn)
+    public void EvEnter()
+    {
+        if (!IsMouseOn)
             Info.ViewThis(this);
+        UI_Manager.MouseR_Callback = () => { OnMouseRCilck(); };
     }
     public void EvExit()
     {
         Info.Off();
+        UI_Manager.MouseR_Callback = null;
     }
 
     public void MouseOn(bool OnOff)
@@ -131,6 +143,13 @@ public class Slot : MonoBehaviour
         PlayerSystem ps = TargetSlot.Item;
         TargetSlot.Item = Item;
         Item = ps;
+    }
+
+
+
+    public virtual void OnMouseRCilck()
+    {
+        if (Item != null) Item.process();
     }
 
     void OnDisable()

@@ -16,6 +16,8 @@ public class InputKeyManager : MonoBehaviour
     }
     #endregion
 
+
+
     //public eMove playerMove;
     //public InputKeyBoard inputkey;
 
