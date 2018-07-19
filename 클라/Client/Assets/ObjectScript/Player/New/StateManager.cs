@@ -16,31 +16,36 @@ public class StateManager : MonoBehaviour
     {
         instance = this;
     }
-#endregion    
-    player _player = player.GetInstance();
+    #endregion
+    player _player;
 
-    //private void Start()
-    //{
-    //    _player = player.GetInstance();
 
-    //    StateInit();
-    //}
+    public List<State> stateList = new List<State>();
 
-    //void StateInit()
-    //{
-    //    State[] s = new State[3];
-    //    s[(int)eState.IDLE] = new IdleState();
-    //    s[(int)eState.MOVE] = new MoveState();
-    //    s[(int)eState.ATTACK] = new AttackState();
+    public void Start()
+    {
+        Debug.Log("State On");
 
-    //    foreach (State i in s)
-    //        _player.stateL.Add(i);
+        _player = player.GetInstance();
 
-    //    foreach (State i in _player.stateL)
-    //        i.Init();
-    //}
+        State[] s = new State[3];
+        int count = 0;
+        s[count++] = new IdleState();
+        s[count++] = new MoveState();
+        s[count++] = new AttackState();
 
-    //private void Update()
-    //{
-    //}
+        foreach (State i in s)
+            stateList.Add(i);
+
+        foreach (State i in stateList)
+            i.statStart();
+    }
+    
+
+    public void Update()
+    {
+        if (stateList == null) return;
+
+        stateList[(int)_player.curState].Update();
+    }
 }

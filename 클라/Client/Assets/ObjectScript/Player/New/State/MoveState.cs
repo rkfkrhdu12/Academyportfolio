@@ -3,95 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MoveState : MonoBehaviour
+public class MoveState : State
 {
-    protected player _player;
-    protected Animator _animator;
 
-    public void Start()
+    override protected void statUpdate()
     {
-        _player = player.GetInstance();
-        _animator = _player.transform.GetComponent<Animator>();
-    }
-
-    public void Update()
-    {
-        //JumpUpdate();
-        MoveUpdate();
-
+        base.statUpdate();
+        
         Move();
     }
-
-    float GroundTime = 1.0f;
-    float currentGroundTime = 0.0f;
-    float _gravityAccel = -10;
-    float _gravityPower = -9.8f;
-
-    //void JumpUpdate()
-    //{
-    //    if (_player.curMove != eMove.JUMP) return;
-
-    //    _PlayerSpeed.IsJump = !_player.charCtrl.isGrounded;
-
-    //    if (!_player.charCtrl.isGrounded)
-    //    {
-    //        _gravityPower += _gravityAccel * Time.deltaTime;
-    //    }
-
-    //    currentGroundTime += Time.deltaTime;
-    //    if (currentGroundTime > GroundTime && _player.charCtrl.isGrounded)
-    //    {
-    //        currentGroundTime = 0.0f;
-    //        _gravityPower = -10;
-    //    }
-
-    //}
-
-    float _PlusSpeed = 3f;
-    float _MovementSpeed = 5;
-    private void MoveUpdate()
-    {
-        if (_player.forward > _player.maxForward / 2)
-        {
-            _player.forward += _player.maxForward;
-            if (_player.side > _player.maxSide / 2)
-            {
-                _player.side += _player.maxSide;
-            }
-            // ani
-            _animator.SetBool("Run", true);
-        }
-        else
-            //ani
-            _animator.SetBool("Run", false);
-
-        if (_player.side != 0 && _player.forward != 0 && _player.IsJump)
-        {
-            _player.forward = _player.forward > 0 ?
-                _player.maxForward / 2 : -_player.maxForward / 2;
-
-            _player.side = _player.side > 0 ?
-                _player.maxSide : -_player.maxSide; ;
-        }
-        else if (_player.side != 0 && _player.forward != 0)
-        {
-            _player.forward /= 2f;
-            _player.side /= 2f;
-        }
-    }
-
-    void Move()
+    
+    private void Move()
     {
         Vector3 speed = Vector3.zero;
-
-        speed.Set(_player.side * _MovementSpeed, _gravityPower, _player.forward * _MovementSpeed);
-        speed = _player.transform.localRotation * speed * _PlusSpeed;
+        speed.Set(_player.moveVec.x * _player._movementSpeed, _player.gravityPower, _player.moveVec.z * _player._movementSpeed);
+        speed = _player.transform.localRotation * speed;
 
         _player.charCtrl.Move(speed * Time.deltaTime);
-        
+    }
+    
+    void MoveAni()
+    {
         //ani
-        _animator.SetFloat("Vertical", _player.forward);
-        _animator.SetFloat("Horizontal", _player.side);
-        _animator.SetBool("Jump", _player.IsJump);
+        if (_player.moveVec.x == 0)
+            _animator.SetFloat("Vertical", _player.moveVec.z);
+        else
+            _animator.SetFloat("Vertical", 0);
+
+        _animator.SetFloat("Horizontal", _player.moveVec.x);
     }
 }

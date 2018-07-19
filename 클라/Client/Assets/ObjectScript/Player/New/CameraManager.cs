@@ -2,20 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraManager : MonoBehaviour
+public class CameraManager
 {
-    public Camera mainCamera;
+    public Camera mainCamera = null;
     private bool _isCamera;
+    private Transform cameraTrs;
+    public void Init(GameObject camera)
+    {
+        Debug.Log("Camera On");
+        cameraTrs = camera.transform;
+        mainCamera = cameraTrs.GetChild(0).GetComponent<Camera>();
+    }
+
+    public void Start()
+    {
+        _isCamera = true;
+    }
 
     public void Update()
     {
+        if (mainCamera == null) return;
+
         CameraUpdate();
     }
 
     float mouseSensitivity = 2;
     float rotationLeftRight;
     float verticalRotation;
-    float verticalAngleLimit = 30;
+    float verticalAngleLimit = 15;
     void CameraUpdate()
     {
         OnOffCamera();
@@ -25,11 +39,11 @@ public class CameraManager : MonoBehaviour
             mainCamera = Camera.main;
 
             rotationLeftRight = Input.GetAxis("Mouse X") * mouseSensitivity;
-            player.GetInstance().transform.transform.Rotate(0, rotationLeftRight, 0);
+            player.GetInstance().transform.Rotate(0, rotationLeftRight, 0);
 
-            verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+            verticalRotation += Input.GetAxis("Mouse Y") * mouseSensitivity;
             verticalRotation = Mathf.Clamp(verticalRotation, -verticalAngleLimit, verticalAngleLimit);
-            mainCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+            cameraTrs.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
         }
     }
 

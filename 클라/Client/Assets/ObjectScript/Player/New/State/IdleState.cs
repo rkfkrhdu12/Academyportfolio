@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : MonoBehaviour
+public class IdleState : State
 {
+    protected override void statUpdate()
+    {
 
+    }
 }

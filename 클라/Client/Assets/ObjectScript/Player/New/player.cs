@@ -2,21 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//public enum eState
-//{
-//    IDLE,
-//    MOVE,
-//    ATTACK,
-//}
-//public enum eMove
-//{
-//    STOP,
-//    MOVE,
-//    RUN,
-//    JUMP,
-//}
-
-   
+public enum eState
+{
+    IDLE,
+    MOVE,
+    ATTACK,
+}
 
 public class player : MonoBehaviour
 {
@@ -32,45 +23,63 @@ public class player : MonoBehaviour
         instance = this;
     }
     #endregion
-
-    //public List<State> stateL = new List<State>();
-    //public eState curState = eState.IDLE;
-    //public eMove curMove = eMove.STOP;
-
-    //public behavior speed;
-
     
-
-    //private void Update()
-    //{
-    //    stateL[(int)curState].Update();
-    //}
-
-    public float forward;
-    public float side;
+    public Vector3 moveVec;
+    public float gravityPower;
     public float maxForward;// .3
     public float maxSide; // .2
 
-    public bool IsJump;
-    public float gravityPower;
-    
-    public float jumpPower; // 2
+    public float _movementSpeed = 5;
 
+    public bool isJump;
+    
     public CharacterController charCtrl;
+
+    public eState curState;
+    
+    private CameraManager CameraMgr;
+    public GameObject _Camera;
     private void Start()
     {
-        // Behavior Init
-        maxForward = .3f;
-        maxSide = .2f;
-        jumpPower = 2;
-        
         // CharacterController Init
         charCtrl = transform.GetComponent<CharacterController>();
+
+        // State Init
+        curState = eState.IDLE;
+
+        // Managers Init
+        CameraMgr = new CameraManager();
+        CameraMgr.Init(_Camera);
+
+        // Data Init
+        maxForward = .3f;
+        maxSide = .2f;
+        isJump = true;
+        isJump = true;
+
+        // Mgrs Start
+        CameraMgr.Start();
     }
 
     private void Update()
     {
+        // Mgr Update
+        CameraMgr.Update();
         
+        GravityUpdate();
     }
 
+    private void GravityUpdate()
+    {
+        if (charCtrl.isGrounded)
+        {
+            isJump = true;
+            gravityPower = 0;
+        }
+        else
+        {
+            gravityPower += -10f * Time.deltaTime;
+        }
+        //if (gravityPower < -3f) _animator.SetBool("Jump", !_player.charCtrl.isGrounded);
+    }
 }
