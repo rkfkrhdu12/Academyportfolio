@@ -36,9 +36,7 @@ public class player : MonoBehaviour
     public CharacterController charCtrl;
 
     public eState curState;
-    
-    private CameraManager CameraMgr;
-    public GameObject _Camera;
+
     private void Start()
     {
         // CharacterController Init
@@ -46,26 +44,15 @@ public class player : MonoBehaviour
 
         // State Init
         curState = eState.IDLE;
-
-        // Managers Init
-        CameraMgr = new CameraManager();
-        CameraMgr.Init(_Camera);
-
+        
         // Data Init
         maxForward = .3f;
         maxSide = .2f;
         isJump = true;
-        isJump = true;
-
-        // Mgrs Start
-        CameraMgr.Start();
     }
 
     private void Update()
     {
-        // Mgr Update
-        CameraMgr.Update();
-        
         GravityUpdate();
     }
 

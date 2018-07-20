@@ -962,6 +962,7 @@ GameObject:
   - component: {fileID: 518438539}
   - component: {fileID: 518438538}
   - component: {fileID: 518438537}
+  - component: {fileID: 518438540}
   m_Layer: 0
   m_Name: Mgr
   m_TagString: Untagged
@@ -1005,6 +1006,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &518438540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 518438536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4224e13e7b6b3348b235a0f435a6774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTrs: {fileID: 0}
 --- !u!1 &521053418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,7 +1629,6 @@ MonoBehaviour:
   isJump: 0
   charCtrl: {fileID: 0}
   curState: 0
-  _Camera: {fileID: 1690237651}
 --- !u!54 &1021506847
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2486,6 +2498,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.9999999
       objectReference: {fileID: 0}
+    - target: {fileID: 1718691325281004, guid: df2dc4d0247b97342af8515f46108148, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95493558993420292, guid: df2dc4d0247b97342af8515f46108148, type: 2}
     - {fileID: 114334117447431884, guid: df2dc4d0247b97342af8515f46108148, type: 2}
@@ -2690,7 +2706,7 @@ GameObject:
   - component: {fileID: 1649357250}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3165,7 +3181,7 @@ GameObject:
   - component: {fileID: 1690237652}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: CameraParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
