@@ -4,66 +4,72 @@ using UnityEngine;
 
 public class InputKeyBoard
 {
-    //private eState _PlayerState;
-    //public behavior prevBehavior;
+    private player _player;
+    private eState _playerState;
 
-    //public void Start()
-    //{
-    //    _PlayerState = player.GetInstance().curState;
-    //    _InputMgrMove = InputKeyManager.GetInstance().playerMove;
-    //    _PlayerSpeed = player.GetInstance().speed;
-    //}
+    private InputKeyManager Mgr;
+    private Vector3 _moveVec;
 
-    //public void MoveUpdate()
-    //{
-    //    if (_PlayerState != eState.ATTACK)
-    //    {
-    //        MoveDataInit();
+    public void Start()
+    {
+        _player = player.GetInstance();
+        _playerState = player.GetInstance().curState;
+        Mgr = InputKeyManager.GetInstance();
+    }
 
-    //        Run();
-    //        Move();
-    //        Jump();
-    //    }
-    //}
-    //#region MoveFuc
+    public void Update()
+    {
+        DataInit();
 
-    //private eMove _InputMgrMove;
-    //private behavior _PlayerSpeed;
+        if (_playerState != eState.ATTACK)
+        {
+            inputMove();
 
-    //void MoveDataInit()
-    //{
-    //    prevBehavior = _PlayerSpeed;
-    //}
+            DataSend();
+        }
+    }
+    #region MoveFuc
 
-    //void Run()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.LeftShift) && _InputMgrMove != eMove.RUN)
-    //    {
-    //        _InputMgrMove = eMove.RUN;
-    //    }
-    //}
-    //void Jump()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space) && _InputMgrMove != eMove.JUMP)
-    //    {
-    //        _InputMgrMove = eMove.JUMP;
-    //        _PlayerSpeed.gravityPower = 2;
-    //    }
-    //}
+    void DataInit()
+    {
+        _player.curState = eState.IDLE;
+    }
 
-    //void Move()
-    //{
-    //    _PlayerSpeed.forward = Input.GetAxis("Vertical");
-    //    _PlayerSpeed.forward = Mathf.Clamp(_PlayerSpeed.forward, -_PlayerSpeed.maxForward, _PlayerSpeed.maxForward);
-        
-    //    _PlayerSpeed.side = Input.GetAxis("Horizontal");
-    //    _PlayerSpeed.side = Mathf.Clamp(_PlayerSpeed.side, -_PlayerSpeed.maxSide, _PlayerSpeed.maxSide);
+    void DataSend()
+    {
+        Mgr.moveVec = _moveVec;
+    }
 
-    //    if (_InputMgrMove != eMove.RUN && _PlayerSpeed != prevBehavior)
-    //        _InputMgrMove = eMove.MOVE;
-    //}
+    void inputMove()
+    {
 
-    
-    //#endregion
+        // Move
+        _player.moveVec.z = Input.GetAxis("Vertical");
+        _player.moveVec.z = Mathf.Clamp(_player.moveVec.z, -_player.maxForward, _player.maxForward);
+
+        _player.moveVec.x = Input.GetAxis("Horizontal");
+        _player.moveVec.x = Mathf.Clamp(_player.moveVec.x, -_player.maxSide, _player.maxSide);
+
+        if (_player.moveVec.z != 0 || _player.moveVec.x != 0)
+        {
+            _player.curState = eState.MOVE;
+        }
+
+        // Run
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _player.curState == eState.MOVE)
+            _player._movementSpeed *= 2;
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+            _player._movementSpeed /= 2;
+
+        // Jump
+        if (Input.GetKeyDown(KeyCode.Space) && _player.isJump)
+        {
+            _player.isJump = false;
+            _player.gravityPower = 6;
+        }
+
+        _player.moveVec.Normalize();
+    }
+    #endregion
 
 }

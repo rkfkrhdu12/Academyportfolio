@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackState : MonoBehaviour
+public class AttackState : State
 {
+    protected override void statUpdate()
+    {
 
+    }
 }

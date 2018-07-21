@@ -15,25 +15,22 @@ public class InputKeyManager : MonoBehaviour
         instance = this;
     }
     #endregion
+    
+    public InputKeyBoard inputkey;
+    public Vector3 moveVec;
+    public void Start()
+    {
+        inputkey = new InputKeyBoard();
 
+        moveVec = Vector3.zero;
 
+        inputkey.Start();
+    }
+   
+    public void Update()
+    {
+        if (inputkey == null) return;
 
-    //public eMove playerMove;
-    //public InputKeyBoard inputkey;
-
-    //private void Start()
-    //{
-    //    inputkey = new InputKeyBoard();
-
-    //    inputkey.Start();
-    //}
-
-    //void Update()
-    //{
-    //    playerMove = eMove.STOP;
-
-    //    inputkey.MoveUpdate();
-
-    //    player.GetInstance().curMove = playerMove;
-    //}
+        inputkey.Update();
+    }
 }
