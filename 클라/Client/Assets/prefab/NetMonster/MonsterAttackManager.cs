@@ -43,9 +43,6 @@ public class MonsterAttackManager : MonoBehaviour
                 if (data.gameObject == NetworkObject.mainPlayer)
                 {
                     data.gameObject.GetComponent<NetworkObject>().m_CurrentHP.Value -= 10;
-                    //ShowEffect(data2,"Blood");
-                    // 주먹에서 피 나와야함, 바꾸자 hit함수 쓰지말고.
-                    // 근데 함수 쓰긴 써야함 : 방어력 계산., 충돌 처리, 요망.
                 }
             };
             skill.EndCallBack = () =>

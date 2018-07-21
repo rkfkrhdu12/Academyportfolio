@@ -30,8 +30,8 @@ public class NetworkObject : oNetworkManager {
     public override void NetworkStarting()
     {
         GetComponent<oNetworkIdentity>().id = id;
-        
-        m_CurrentHP.Value = GetComponent<oCreature>().MaximumHP;
+
+        netplayerStat.Updater(gameObject);
 
         netPlayer = new NetPlayerUpdater(id,GetComponent<Animator>());
        

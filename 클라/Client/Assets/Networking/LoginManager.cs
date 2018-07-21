@@ -7,7 +7,6 @@ using FlatBuffers;
 public class LoginManager : oNetworkManager
 {
     public static bool IsLogIN = false;
-    public static int PlayerCode;
 
     public static LoginManager instance;
     [SerializeField] GameObject LoginUI;
@@ -30,8 +29,9 @@ public class LoginManager : oNetworkManager
             if (LoginData.IsSignin)
             {
                 Debug.Log(LoginData.Id);
-                PlayerCode = int.Parse(LoginData.Id);
+                GetComponent<OnServerStart>().Started(int.Parse(LoginData.Id));
                 LoginUI.SetActive(false);
+                Destroy(GetComponent<LoginManager>());
             }
             else
             {

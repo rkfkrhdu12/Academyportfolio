@@ -5283,6 +5283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb287a1b6ea47c4ab1c1b2d857fec97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RemoveList: 
+  mRemoveList: 
 --- !u!1 &1229110847
 GameObject:
   m_ObjectHideFlags: 0

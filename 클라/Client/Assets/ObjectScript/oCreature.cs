@@ -19,7 +19,10 @@ public class oCreature : oObject
 
     public bool isAttacked { get; set; }
 
-
+    public void Data_Update(Vec3 pos)
+    {
+        transform.position = new Vector3(pos.X,pos.Y,pos.Z);
+    }
     public void Data_Update(PlayerStat stat)
     {
         CurrentHP.NoEventSet(stat.HP);

@@ -33,6 +33,7 @@ public class PlayerHUD : MonoBehaviour {
             };
 
             player.GetComponent<oCreature>().CurrentHP.AddEvent(action);
+            player.GetComponent<NetworkObject>().m_CurrentHP.OtherEvent(action);
             GetComponent<PlayerHUD>().enabled = false;
         }
     }

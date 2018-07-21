@@ -50,6 +50,12 @@ public class Slot : MonoBehaviour
 
     public void SetItemNumber()
     {
+        if (number == 0)
+        {
+            Item = null;
+            return;
+        }
+
         if (number > 1) number_text.text = "" + number;
         else number_text.text = "";
     }
@@ -65,14 +71,7 @@ public class Slot : MonoBehaviour
         {
             ShowIcon(0.6f);
             SetItemNumber();
-            Item.Number.Event = () =>
-            {
-                if (number == 0)
-                    Item = null;
-                else
-                    SetItemNumber();
-
-            };
+            Item.NumberCallback[this] = SetItemNumber;
             icon_Obj.GetComponent<Image>().sprite = Item.icon;
         }
         else
@@ -140,6 +139,10 @@ public class Slot : MonoBehaviour
     }
     void ItemSwap()
     {
+        Item.NumberCallback.Remove(this);
+        if(TargetSlot.Item != null)
+            TargetSlot.Item.NumberCallback.Remove(TargetSlot);
+
         PlayerSystem ps = TargetSlot.Item;
         TargetSlot.Item = Item;
         Item = ps;

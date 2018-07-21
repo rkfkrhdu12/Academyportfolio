@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class KeySettingManager : MonoBehaviour {
 
-    public Dictionary<KeyCode, System.Action> KeyEvent = new Dictionary<KeyCode, System.Action>();
+    public Dictionary<KeyCode, Action> KeyEvent = new Dictionary<KeyCode, Action>();
+    public List<KeyCode> RemoveList = new List<KeyCode>();
+    public List<int> mRemoveList = new List<int>();
 
-    public System.Action[] MouseButton = new System.Action[2];
+    public Action[] MouseButton = new Action[2];
 
 
     private void Start()
@@ -26,5 +29,17 @@ public class KeySettingManager : MonoBehaviour {
         }
         if (Input.GetMouseButtonDown(0)) MouseButton[0]();
         if (Input.GetMouseButtonDown(1)) MouseButton[1]();
+
+
+        foreach (var i in RemoveList)
+        {
+            KeyEvent.Remove(i);
+        }
+        foreach (var i in mRemoveList)
+        {
+            MouseButton[i] = ()=> { };
+        }
+        RemoveList.Clear();
+        mRemoveList.Clear();
     }
 }

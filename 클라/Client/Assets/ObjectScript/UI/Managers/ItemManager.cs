@@ -14,7 +14,8 @@ public class ItemManager : MonoBehaviour
         Weapon weapon = new Weapon();
         Armor armor = new Armor();
         Stuff stuff = new Stuff();
-        
+        Stuff stuff2 = new Stuff();
+
         weapon._name = "무기";
         weapon._info = "기본무기이다.";
         weapon.icon = icon_1;
@@ -34,12 +35,18 @@ public class ItemManager : MonoBehaviour
         stuff.Number.Value = 5;
         stuff.Hp = 10;
         stuff.icon = icon_3;
-        
+
+        stuff2._name = "포션2";
+        stuff2._info = "기본포션2이다.";
+        stuff2.Number.Value = 5;
+        stuff2.Hp = 5;
+        stuff2.icon = icon_3;
 
 
 
         InventoryManager.AddItem(weapon);
         InventoryManager.AddItem(armor);
         InventoryManager.AddItem(stuff);
+        InventoryManager.AddItem(stuff2);
     }
 }

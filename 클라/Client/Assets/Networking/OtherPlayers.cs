@@ -15,10 +15,11 @@ public class OtherPlayers : MonoBehaviour {
     }
 
     void Start () {
+        oNetworkManager MainPlayer = NetworkObject.mainPlayer.GetComponent<oNetworkManager>();
         NetDataReader.GetInstace().Reder[Class.Player] = (data) => {
             var m_player = Player.GetRootAsPlayer(data.ByteBuffer);
 
-            if (m_player.ID != NetworkObject.mainPlayer.GetComponent<oNetworkManager>().id) {
+            if (m_player.ID != MainPlayer.id) {
                 if (!OPlayers.ContainsKey(m_player.ID))
                 {
                     var obj = Instantiate(PlayerPrifab, Vector3.zero, Quaternion.identity);
@@ -31,15 +32,65 @@ public class OtherPlayers : MonoBehaviour {
 
                 OPlayers[m_player.ID].UpdateOtherObj(m_player);
             }
+            else if (m_player.ID == MainPlayer.id)
+            {
+                var pos = m_player.Pos.Value;
+                MainPlayer.transform.position.Set(pos.X, pos.Y, pos.Z);
+            }
         };
+
+
+
+
+
+
+        NetDataReader.GetInstace().Reder[Class.FirstCharacterData] = (data) =>
+        {
+            var FirstPlayerData = FirstCharacterData.GetRootAsFirstCharacterData(data.ByteBuffer);
+
+
+            var fbb = new FlatBuffers.FlatBufferBuilder(1);
+
+            fbb.Finish(PlayerStat.CreatePlayerStat(
+                fbb,
+                Class.PlayerStat,
+                FirstPlayerData.HP,
+                FirstPlayerData.HPLim,
+                FirstPlayerData.MP,
+                FirstPlayerData.MPLim,
+                FirstPlayerData.LV,
+                FirstPlayerData.ID
+            ).Value);
+            
+            var buf = new FlatBuffers.ByteBuffer(fbb.SizedByteArray());
+
+            var _PlayerStat = PlayerStat.GetRootAsPlayerStat(buf);
+
+            var pos = FirstPlayerData.Pos.Value;
+            MainPlayer.GetComponent<oCreature>().Data_Update(_PlayerStat);
+            MainPlayer.GetComponent<oCreature>().Data_Update(pos);
+            MainPlayer.GetComponent<NetworkObject>().m_CurrentHP.NoEventSet(_PlayerStat.HP);
+
+            Vector3 v3 = new Vector3();
+            v3.Set(pos.X, pos.Y, pos.Z);
+
+            Debug.Log(v3 +"\n"+ MainPlayer.transform.position);
+        };
+
+
+
+
+
+
 
         NetDataReader.GetInstace().Reder[Class.PlayerStat] = (data) => {
             var _PlayerStat = PlayerStat.GetRootAsPlayerStat(data.ByteBuffer);
            
-            if (_PlayerStat.ID == NetworkObject.mainPlayer.GetComponent<oNetworkManager>().id)
+            if (_PlayerStat.ID == MainPlayer.id)
             {
-                NetworkObject.mainPlayer.GetComponent<oCreature>().Data_Update(_PlayerStat);
-                NetworkObject.mainPlayer.GetComponent<NetworkObject>().m_CurrentHP.NoEventSet(_PlayerStat.HP);
+                MainPlayer.GetComponent<oCreature>().Data_Update(_PlayerStat);
+                MainPlayer.GetComponent<NetworkObject>().m_CurrentHP.NoEventSet(_PlayerStat.HP);
+
             }
             else if(OPlayers.ContainsKey(_PlayerStat.ID))
             {
@@ -54,13 +105,7 @@ public class OtherPlayers : MonoBehaviour {
         };
     }
 
-    public static GameObject GetPlayerObj(int id)
-    {
-        if (id == NetworkObject.mainPlayer.GetComponent<oNetworkManager>().id)
-            return NetworkObject.mainPlayer;
-        return instance.OPlayers[id].gameObject;
-    }
-    
+
 }
 
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillSlot : Slot {
-
     public override void SlotStart()
     {
         base.SlotStart();

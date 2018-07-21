@@ -9,18 +9,9 @@ public class OnServerStart : MonoBehaviour
     public static List<oNetworkManager> Event = new List<oNetworkManager>();
 
 
-    void Awake()
-    {
-        NetDataReader.GetInstace().Reder[Class.id] = (data) =>
-        {
-            Started(id.GetRootAsid(data.ByteBuffer).ID);
-        };
-    }
 
 
-
-
-    void Started(int id)
+    public void Started(int id)
     {
         foreach (var i in Event)
         {
