@@ -7,6 +7,7 @@ public class NetStatUpdater{
     
     public void Updater (GameObject Obj) {
         int id = Obj.GetComponent<oNetworkIdentity>().id;
+        Debug.Log("my ID : "+id);
         oCreature oCreature = Obj.GetComponent<oCreature>();
 
         var fbb = new FlatBufferBuilder(1);
