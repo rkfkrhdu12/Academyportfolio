@@ -1859,14 +1859,14 @@ Here is an example of handling the callback:</para>
     </member>
     <member name="M:UnityEngine.Application.LoadLevel(System.Int32)">
       <summary>
-        <para>Loads the level by its name or index.</para>
+        <para>Note: This is now obsolete. Use SceneManager.LoadScene instead.</para>
       </summary>
       <param name="index">The level to load.</param>
       <param name="name">The name of the level to load.</param>
     </member>
     <member name="M:UnityEngine.Application.LoadLevel(System.String)">
       <summary>
-        <para>Loads the level by its name or index.</para>
+        <para>Note: This is now obsolete. Use SceneManager.LoadScene instead.</para>
       </summary>
       <param name="index">The level to load.</param>
       <param name="name">The name of the level to load.</param>
@@ -3764,6 +3764,26 @@ If called outside of a rendering callback and stereo is enabled, it will return 
       </summary>
       <param name="eye">Specifies the stereoscopic eye whose non-jittered projection matrix will be sourced from the VR SDK.</param>
     </member>
+    <member name="M:UnityEngine.Camera.FocalLengthToFOV(System.Single,System.Single)">
+      <summary>
+        <para>Converts focal length to field of view.</para>
+      </summary>
+      <param name="focalLength">Focal length in millimeters.</param>
+      <param name="sensorSize">Sensor size in millimeters. Use sensor height to get vertical field of view. Use sensor width to get horizontal field of view.</param>
+      <returns>
+        <para>Field of view in degrees.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Camera.FOVToFocalLength(System.Single,System.Single)">
+      <summary>
+        <para>Converts field of view to focal length. Use either sensor height and vertical field of view, or sensor width and horizontal field of view.</para>
+      </summary>
+      <param name="fov">Field of view in degrees.</param>
+      <param name="sensorSize">Sensor size in millimeters.</param>
+      <returns>
+        <para>Focal length in millimeters.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.Camera.GetAllCameras(UnityEngine.Camera[])">
       <summary>
         <para>Fills an array of Camera with the current cameras in the scene, without allocating a new array.</para>
@@ -3890,6 +3910,11 @@ The default value is Camera.MonoOrStereoscopicEye.Left, so Camera.MonoOrStereosc
       </summary>
       <param name="shader"></param>
       <param name="replacementTag"></param>
+    </member>
+    <member name="M:UnityEngine.Camera.Reset">
+      <summary>
+        <para>Revert all camera parameters to default.</para>
+      </summary>
     </member>
     <member name="M:UnityEngine.Camera.ResetAspect">
       <summary>
@@ -7805,11 +7830,6 @@ The default value is Camera.MonoOrStereoscopicEye.Left, so Camera.MonoOrStereosc
         <para>Native engine system updated by the native player loop.</para>
       </summary>
     </member>
-    <member name="T:UnityEngine.Experimental.PlayerLoop.FixedUpdate.ScriptRunDelayedTasks">
-      <summary>
-        <para>Native engine system updated by the native player loop.</para>
-      </summary>
-    </member>
     <member name="T:UnityEngine.Experimental.PlayerLoop.FixedUpdate.XRFixedUpdate">
       <summary>
         <para>Native engine system updated by the native player loop.</para>
@@ -8186,6 +8206,11 @@ The default value is Camera.MonoOrStereoscopicEye.Left, so Camera.MonoOrStereosc
       </summary>
     </member>
     <member name="T:UnityEngine.Experimental.PlayerLoop.Update.ScriptRunDelayedDynamicFrameRate">
+      <summary>
+        <para>Native engine system updated by the native player loop.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.Experimental.PlayerLoop.Update.ScriptRunDelayedTasks">
       <summary>
         <para>Native engine system updated by the native player loop.</para>
       </summary>
@@ -12856,6 +12881,12 @@ All of the commands within the buffer are guaranteed to be executed on the same 
         <para>Get if the hash value is valid or not. (Read Only)</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.Hash128.Compute(System.String)">
+      <summary>
+        <para>Compute a hash of the input string.</para>
+      </summary>
+      <param name="hashString"></param>
+    </member>
     <member name="M:UnityEngine.Hash128.#ctor(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
       <summary>
         <para>Construct the Hash128.</para>
@@ -15390,6 +15421,11 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
         <para>The Intensity of a light is multiplied with the Light color.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Light.layerShadowCullDistances">
+      <summary>
+        <para>Per-light, per-layer shadow culling distances.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Light.lightShadowCasterMode">
       <summary>
         <para>Allows you to override the global Shadowmask Mode per light. Only use this with render pipelines that can handle per light Shadowmask modes. Incompatible with the legacy renderers.</para>
@@ -15701,6 +15737,11 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
         <para>The mode in which the interpolated Light Probe positions are generated.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.LightProbeProxyVolume.qualityMode">
+      <summary>
+        <para>Determines how many Spherical Harmonics bands will be evaluated to compute the ambient color.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.LightProbeProxyVolume.refreshMode">
       <summary>
         <para>Sets the way the Light Probe Proxy Volume refreshes.</para>
@@ -15749,6 +15790,21 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
     <member name="F:UnityEngine.LightProbeProxyVolume.ProbePositionMode.CellCorner">
       <summary>
         <para>Divide the volume in cells based on resolution, and generate interpolated Light Probes positions in the corner/edge of the cells.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.LightProbeProxyVolume.QualityMode">
+      <summary>
+        <para>An enum describing the Quality option used by the Light Probe Proxy Volume component.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.LightProbeProxyVolume.QualityMode.Low">
+      <summary>
+        <para>This option will use only two SH coefficients bands: L0 and L1. The coefficients are sampled from the Light Probe Proxy Volume 3D Texture. Using this option might increase the draw call batch sizes by not having to change the L2 coefficients per Renderer.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.LightProbeProxyVolume.QualityMode.Normal">
+      <summary>
+        <para>This option will use L0 and L1 SH coefficients from the Light Probe Proxy Volume 3D Texture. The L2 coefficients are constant per Renderer. By having to provide the L2 coefficients, draw call batches might be broken.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.LightProbeProxyVolume.RefreshMode">
@@ -25481,6 +25537,11 @@ Allows for CPU determination of whether the GPU has passed the point in its proc
         <para>PlayStation Vita graphics API.</para>
       </summary>
     </member>
+    <member name="F:UnityEngine.Rendering.GraphicsDeviceType.Switch">
+      <summary>
+        <para>Nintendo Switch graphics API.</para>
+      </summary>
+    </member>
     <member name="F:UnityEngine.Rendering.GraphicsDeviceType.Vulkan">
       <summary>
         <para>Vulkan (EXPERIMENTAL).</para>
@@ -26264,6 +26325,11 @@ Updating a probe's cubemap is a costly operation. Unity needs to render the enti
         <para>Enable a specific shader keyword.</para>
       </summary>
       <param name="keyword"></param>
+    </member>
+    <member name="M:UnityEngine.Rendering.ShaderKeywordSet.GetShaderKeywords">
+      <summary>
+        <para>Return an array with all the enabled keywords in the ShaderKeywordSet.</para>
+      </summary>
     </member>
     <member name="M:UnityEngine.Rendering.ShaderKeywordSet.IsEnabled(UnityEngine.Rendering.ShaderKeyword)">
       <summary>
@@ -32479,6 +32545,12 @@ Useful for restarting a trail from a new position.</para>
         <para>Get the tag of this SpriteAtlas.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.U2D.SpriteAtlas.CanBindTo(UnityEngine.Sprite)">
+      <summary>
+        <para>Return true if Sprite is packed into this SpriteAtlas.</para>
+      </summary>
+      <param name="sprite"></param>
+    </member>
     <member name="M:UnityEngine.U2D.SpriteAtlas.GetSprite(System.String)">
       <summary>
         <para>Clone the first Sprite in this atlas that matches the name packed in this atlas and return it.</para>
@@ -32505,6 +32577,12 @@ Useful for restarting a trail from a new position.</para>
       <summary>
         <para>Manages SpriteAtlas during runtime.</para>
       </summary>
+    </member>
+    <member name="?:UnityEngine.U2D.SpriteAtlasManager.atlasRegistered(System.Action`1&lt;UnityEngine.U2D.SpriteAtlas&gt;)">
+      <summary>
+        <para>Trigger when a SpriteAtlas is registered via invoking the callback in U2D.SpriteAtlasManager.atlasRequested.</para>
+      </summary>
+      <param name="value"></param>
     </member>
     <member name="?:UnityEngine.U2D.SpriteAtlasManager.atlasRequested(UnityEngine.U2D.SpriteAtlasManager/RequestAtlasCallback)">
       <summary>

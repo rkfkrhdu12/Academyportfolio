@@ -722,6 +722,11 @@ Instance is used to enable and disable the inputs coming from a specific plugin.
         <para>Class providing information about XRSessionSubsystem registration.</para>
       </summary>
     </member>
+    <member name="A:UnityEngine.XRModule">
+      <summary>
+        <para>The XR module contains the VR and AR related platform support functionality.</para>
+      </summary>
+    </member>
     <member name="T:UnityEngine.XR.InputTracking">
       <summary>
         <para>A collection of methods and properties for interacting with the XR tracking system.</para>

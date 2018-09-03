@@ -50,22 +50,22 @@
     </member>
     <member name="T:UnityEngine.Networking.DownloadHandlerMovieTexture">
       <summary>
-        <para>A specialized DownloadHandler for creating MovieTexture out of downloaded bytes.</para>
+        <para>MovieTexture has been deprecated. Refer to the new movie playback solution VideoPlayer.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Networking.DownloadHandlerMovieTexture.movieTexture">
       <summary>
-        <para>A MovieTexture created out of downloaded bytes.</para>
+        <para>MovieTexture has been deprecated. Refer to the new movie playback solution VideoPlayer.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Networking.DownloadHandlerMovieTexture.#ctor">
       <summary>
-        <para>Create new DownloadHandlerMovieTexture.</para>
+        <para>MovieTexture has been deprecated. Refer to the new movie playback solution VideoPlayer.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Networking.DownloadHandlerMovieTexture.GetContent(UnityEngine.Networking.UnityWebRequest)">
       <summary>
-        <para>A convenience (helper) method for casting DownloadHandler to DownloadHandlerMovieTexture and accessing its movieTexture property.</para>
+        <para>MovieTexture has been deprecated. Refer to the new movie playback solution VideoPlayer.</para>
       </summary>
       <param name="uwr">A UnityWebRequest with attached DownloadHandlerMovieTexture.</param>
       <returns>
@@ -74,7 +74,7 @@
     </member>
     <member name="M:UnityEngine.Networking.DownloadHandlerMovieTexture.GetData">
       <summary>
-        <para>Raw downloaded data.</para>
+        <para>MovieTexture has been deprecated. Refer to the new movie playback solution VideoPlayer.</para>
       </summary>
       <returns>
         <para>Raw downloaded bytes.</para>

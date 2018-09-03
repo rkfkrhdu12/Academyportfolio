@@ -29,6 +29,7 @@ public class GetPing : oNetworkManager
     }
 
 
+
     public override void NetworkStarting()
     {
         StartCoroutine(NetUpdate(() =>

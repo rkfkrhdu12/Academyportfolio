@@ -239,6 +239,11 @@
         <para>Set the terrain bounding box scale.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Terrain.preserveTreePrototypeLayers">
+      <summary>
+        <para>Allows you to specify how Unity chooses the for tree instances.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Terrain.realtimeLightmapIndex">
       <summary>
         <para>The index of the realtime lightmap applied to this terrain.</para>
@@ -807,7 +812,7 @@ Rotation of the tree on X-Z plane (in radians).</para>
     </member>
     <member name="P:UnityEngine.TreePrototype.prefab">
       <summary>
-        <para>Retrieves the actual GameObect used by the tree.</para>
+        <para>Retrieves the actual GameObject used by the tree.</para>
       </summary>
     </member>
     <member name="A:UnityEngine.TerrainModule">

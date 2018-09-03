@@ -16,6 +16,7 @@ public class OtherPlayers : MonoBehaviour {
 
     void Start () {
         oNetworkManager MainPlayer = NetworkObject.mainPlayer.GetComponent<oNetworkManager>();
+
         NetDataReader.GetInstace().Reder[Class.Player] = (data) => {
             var m_player = Player.GetRootAsPlayer(data.ByteBuffer);
 

@@ -4959,5 +4959,10 @@
         <para>Reset the event members to their initial value.</para>
       </summary>
     </member>
+    <member name="A:UnityEngine.UIElementsModule">
+      <summary>
+        <para>The UIElements module implements the UIElements retained mode UI framework.</para>
+      </summary>
+    </member>
   </members>
 </doc>

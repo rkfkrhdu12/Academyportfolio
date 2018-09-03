@@ -114,11 +114,15 @@ public class TCPClient : oNetworkManager
     }
     private void Update()
     {
+        
         if (!actions.IsEmpty)
         {
-            Action act;
-            actions.TryDequeue(out act);
-            act();
+            foreach (var i in actions)
+            {
+                Action act;
+                actions.TryDequeue(out act);
+                act();
+            }
         }
     }
 
@@ -138,7 +142,7 @@ public class TCPClient : oNetworkManager
             {
                 byte[] clientMessageAsByteArray = str;
                 stream.Write(clientMessageAsByteArray, 0, clientMessageAsByteArray.Length);
-                //Debug.Log("보낸 데이터 수 ---->");
+                Debug.Log("보낸 데이터 수 ---->");
             }
             else
             {

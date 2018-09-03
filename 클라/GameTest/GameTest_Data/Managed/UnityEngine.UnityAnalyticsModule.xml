@@ -411,5 +411,10 @@
         <para>True, if the remote settings file was received from the Analytics Service in the current session. False, if the remote settings file was received during an earlier session and cached.</para>
       </returns>
     </member>
+    <member name="A:UnityEngine.UnityAnalyticsModule">
+      <summary>
+        <para>The UnityAnalytics module implements APIs required to use Unity Analytics.</para>
+      </summary>
+    </member>
   </members>
 </doc>

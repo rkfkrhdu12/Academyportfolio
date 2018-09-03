@@ -26,7 +26,7 @@ public class LoginManager : oNetworkManager
         NetDataReader.GetInstace().Reder[Class.LogIn] = (data) =>
         {
             var LoginData = Login.GetRootAsLogin(data.ByteBuffer);
-            if (LoginData.IsSignin)
+            if (LoginData.IsSuccess)
             {
                 Debug.Log(LoginData.Id);
                 GetComponent<OnServerStart>().Started(int.Parse(LoginData.Id));

@@ -1603,6 +1603,11 @@ Prefab:
       propertyPath: t.Array.data[1]
       value: 
       objectReference: {fileID: 1067156799}
+    - target: {fileID: 114936107889756696, guid: f88391a2fab4e3844a51c5d96c23326a,
+        type: 2}
+      propertyPath: Url
+      value: localhost
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f88391a2fab4e3844a51c5d96c23326a, type: 2}
   m_IsPrefabAsset: 0
