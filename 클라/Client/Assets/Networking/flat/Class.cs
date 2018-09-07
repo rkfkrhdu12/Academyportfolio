@@ -15,5 +15,7 @@ public enum Class : int
  MonsterStat = 8,
  LogIn = 9,
  FirstCharacterData = 10,
+ fItem = 11,
+ fInventory = 12,
 };
 
