@@ -1608,6 +1608,16 @@ Prefab:
       propertyPath: Url
       value: localhost
       objectReference: {fileID: 0}
+    - target: {fileID: 114936107889756696, guid: f88391a2fab4e3844a51c5d96c23326a,
+        type: 2}
+      propertyPath: FPS_iterator_rate
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 114936107889756696, guid: f88391a2fab4e3844a51c5d96c23326a,
+        type: 2}
+      propertyPath: pingManager
+      value: 
+      objectReference: {fileID: 1940311020}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f88391a2fab4e3844a51c5d96c23326a, type: 2}
   m_IsPrefabAsset: 0
@@ -2747,7 +2757,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 653632504}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
   m_Name: 
@@ -2835,7 +2845,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 653632504}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fceaeb339b971b429c4cc600acabd13, type: 3}
   m_Name: 
@@ -2873,7 +2883,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 653632504}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 646b5bc27a658f447b1d929fd5ffbd70, type: 3}
   m_Name: 
@@ -2899,7 +2909,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 653632504}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fd999d1b2cf94a45a5b0a47ce074bef, type: 3}
   m_Name: 
@@ -5407,7 +5417,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 0.792

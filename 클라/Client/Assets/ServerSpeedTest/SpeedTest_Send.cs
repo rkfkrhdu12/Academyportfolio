@@ -12,18 +12,19 @@ public class SpeedTest_Send : oNetworkManager {
     // Use this for initialization
     void Start () {
 
-        NetDataReader.GetInstace().Reder[Class.test] = (data) =>
-        {
-            Debug.Log(test.GetRootAstest(data.ByteBuffer).Num);
-            //long t = System.DateTime.Now.ToBinary() - (long)test.GetRootAstest(data.ByteBuffer).Num;
-            //GetComponentInChildren<Text>().text = ""+(int)(t*(0.0001f));
-        };
+		NetDataReader.GetInstace().Reder[Class.ping] = (data) =>
+		{
+			long t = System.DateTime.Now.ToBinary() - (long)test.GetRootAstest(data.ByteBuffer).Num;
+			GetComponentInChildren<Text>().text = ""+(int)(t * (0.0001f));
+		};
+
+		r = StartCoroutine(NetUpdate(() =>
+		{
+			Send();
+		}, SendRate));
 
 
-        r =  StartCoroutine(NetUpdate(()=>
-        {
-            Send();
-        }, SendRate));
+
 	}
 
     private void OnGUI()
@@ -38,10 +39,10 @@ public class SpeedTest_Send : oNetworkManager {
 
     void Send()
     {
-        var fbb = new FlatBufferBuilder(1);
-        fbb.Finish(test.Createtest(fbb, Class.test, i++).Value);
-        TCPClient.Instance.Send(fbb.SizedByteArray());
-    }
+		var fbb = new FlatBufferBuilder(1);
+		fbb.Finish(ping.Createping(fbb, Class.ping, System.DateTime.Now.ToBinary()).Value);
+		TCPClient.Instance.Send(fbb.SizedByteArray());
+	}
 	
 	void Update ()
     {

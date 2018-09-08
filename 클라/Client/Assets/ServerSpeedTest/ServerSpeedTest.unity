@@ -152,6 +152,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114936107889756696, guid: f88391a2fab4e3844a51c5d96c23326a,
+        type: 2}
+      propertyPath: Url
+      value: localhost
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f88391a2fab4e3844a51c5d96c23326a, type: 2}
   m_IsPrefabAsset: 0
@@ -427,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5930cbf3c9279428b8b9028be571f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SendRate: 0.03
+  SendRate: 0.01
 --- !u!1 &1801704638
 GameObject:
   m_ObjectHideFlags: 0

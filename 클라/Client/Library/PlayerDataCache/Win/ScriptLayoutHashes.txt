@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/anyc1/OneDrive/바탕 화면/myGit/Academyportfolio/클라/GameTest/GameTest.exe
+C:/Users/Atents/Desktop/git/Academyportfolio/클라/GameTest/ServerTest.exe
 SceneListBegin?
 Assets/MainScene/Main.unity
 SceneListEnd?
@@ -147,7 +147,7 @@ af544d323eaee0a88d674a8c9fabf42b Assembly-CSharp.dll:.player
 6893169c34f2bd6e21624eac3f65cee9 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ScreenSpaceAmbientObscurance
 3130072b50cbffefd4d45ec6b2a63558 Assembly-CSharp.dll:.BPlayer
 d6644373a29f7539fce7c7b7990268dc Assembly-CSharp.dll:.GunShoot
-e7075205ff03bee2bf3fbc1c424ab76c Assembly-CSharp.dll:.TCPClient
+4fb0d2d5991c9d266b875082f9a52f76 Assembly-CSharp.dll:.TCPClient
 7771f1f85329c4fb5fb7454191ebd880 Assembly-CSharp.dll:.PlayerAttackManager
 56a4dd72a972b95458ebf75afb224a57 Assembly-CSharp.dll:.DecalDestroyer
 a8997dd80150f765add7ac0fea0ae274 Assembly-CSharp.dll:.CreateSlotsManager

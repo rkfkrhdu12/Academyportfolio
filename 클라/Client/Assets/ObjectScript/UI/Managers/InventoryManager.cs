@@ -20,7 +20,7 @@ public class InventoryManager : SlotsManager
     {
         NetDataReader.GetInstace().Reder[Class.fItem] = (data) => {
             var item = fItem.GetRootAsfItem(data.ByteBuffer);
-            //서버에서 데이터 다 보내주는걸로다가....
+			Debug.Log("item data recv name : "+item.Name);
         };
 
         NetDataReader.GetInstace().Reder[Class.fInventory] = (data) => {

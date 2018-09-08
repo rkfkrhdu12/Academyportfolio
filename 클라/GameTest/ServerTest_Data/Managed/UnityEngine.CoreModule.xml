@@ -3764,6 +3764,26 @@ If called outside of a rendering callback and stereo is enabled, it will return 
       </summary>
       <param name="eye">Specifies the stereoscopic eye whose non-jittered projection matrix will be sourced from the VR SDK.</param>
     </member>
+    <member name="M:UnityEngine.Camera.FocalLengthToFOV(System.Single,System.Single)">
+      <summary>
+        <para>Converts focal length to field of view.</para>
+      </summary>
+      <param name="focalLength">Focal length in millimeters.</param>
+      <param name="sensorSize">Sensor size in millimeters. Use sensor height to get vertical field of view. Use sensor width to get horizontal field of view.</param>
+      <returns>
+        <para>Field of view in degrees.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Camera.FOVToFocalLength(System.Single,System.Single)">
+      <summary>
+        <para>Converts field of view to focal length. Use either sensor height and vertical field of view, or sensor width and horizontal field of view.</para>
+      </summary>
+      <param name="fov">Field of view in degrees.</param>
+      <param name="sensorSize">Sensor size in millimeters.</param>
+      <returns>
+        <para>Focal length in millimeters.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.Camera.GetAllCameras(UnityEngine.Camera[])">
       <summary>
         <para>Fills an array of Camera with the current cameras in the scene, without allocating a new array.</para>
@@ -3890,6 +3910,11 @@ The default value is Camera.MonoOrStereoscopicEye.Left, so Camera.MonoOrStereosc
       </summary>
       <param name="shader"></param>
       <param name="replacementTag"></param>
+    </member>
+    <member name="M:UnityEngine.Camera.Reset">
+      <summary>
+        <para>Revert all camera parameters to default.</para>
+      </summary>
     </member>
     <member name="M:UnityEngine.Camera.ResetAspect">
       <summary>
@@ -15396,6 +15421,11 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
         <para>The Intensity of a light is multiplied with the Light color.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Light.layerShadowCullDistances">
+      <summary>
+        <para>Per-light, per-layer shadow culling distances.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Light.lightShadowCasterMode">
       <summary>
         <para>Allows you to override the global Shadowmask Mode per light. Only use this with render pipelines that can handle per light Shadowmask modes. Incompatible with the legacy renderers.</para>
@@ -25507,6 +25537,11 @@ Allows for CPU determination of whether the GPU has passed the point in its proc
         <para>PlayStation Vita graphics API.</para>
       </summary>
     </member>
+    <member name="F:UnityEngine.Rendering.GraphicsDeviceType.Switch">
+      <summary>
+        <para>Nintendo Switch graphics API.</para>
+      </summary>
+    </member>
     <member name="F:UnityEngine.Rendering.GraphicsDeviceType.Vulkan">
       <summary>
         <para>Vulkan (EXPERIMENTAL).</para>
@@ -32510,6 +32545,12 @@ Useful for restarting a trail from a new position.</para>
         <para>Get the tag of this SpriteAtlas.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.U2D.SpriteAtlas.CanBindTo(UnityEngine.Sprite)">
+      <summary>
+        <para>Return true if Sprite is packed into this SpriteAtlas.</para>
+      </summary>
+      <param name="sprite"></param>
+    </member>
     <member name="M:UnityEngine.U2D.SpriteAtlas.GetSprite(System.String)">
       <summary>
         <para>Clone the first Sprite in this atlas that matches the name packed in this atlas and return it.</para>
@@ -32536,6 +32577,12 @@ Useful for restarting a trail from a new position.</para>
       <summary>
         <para>Manages SpriteAtlas during runtime.</para>
       </summary>
+    </member>
+    <member name="?:UnityEngine.U2D.SpriteAtlasManager.atlasRegistered(System.Action`1&lt;UnityEngine.U2D.SpriteAtlas&gt;)">
+      <summary>
+        <para>Trigger when a SpriteAtlas is registered via invoking the callback in U2D.SpriteAtlasManager.atlasRequested.</para>
+      </summary>
+      <param name="value"></param>
     </member>
     <member name="?:UnityEngine.U2D.SpriteAtlasManager.atlasRequested(UnityEngine.U2D.SpriteAtlasManager/RequestAtlasCallback)">
       <summary>

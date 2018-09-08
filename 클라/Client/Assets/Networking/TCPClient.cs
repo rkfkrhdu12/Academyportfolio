@@ -15,8 +15,10 @@ public class TCPClient : oNetworkManager
     public string Url;
     public int port;
 
-    public int MY_ID;
 
+
+	public int MY_ID;
+	public GetPing pingManager;
 
     ConcurrentQueue<Action> actions = new ConcurrentQueue<Action>();
 
@@ -90,12 +92,25 @@ public class TCPClient : oNetworkManager
                         //Debug.Log("받아온 데이터 수.");
 
                         var Data = ctype;
+						long t = 1;
+
+						if (Data.CType == Class.ping)
+						{
+							t = (System.DateTime.Now.ToBinary() - ((long)ping.GetRootAsping(ctype.ByteBuffer).Time));
+						}
+
+						var m_t = t;
                         actions.Enqueue(()=>
                         {
+
                             if (NetDataReader.GetInstace().Reder.ContainsKey(Data.CType))
                             {
-                                //Debug.Log("데이터 받음. [" + Data.CType + "]" + "[" + length + "]");
-                                NetDataReader.GetInstace().Reder[Data.CType](Data);
+								//Debug.Log("데이터 받음. [" + Data.CType + "]" + "[" + length + "]");	
+								if (Data.CType == Class.ping)
+								{
+									pingManager.GetPings(m_t);
+								}
+								NetDataReader.GetInstace().Reder[Data.CType](Data);
                             }
                             else
                             {
@@ -128,7 +143,8 @@ public class TCPClient : oNetworkManager
 
 
 
-    void SendChat(byte[] str)
+
+	void SendChat(byte[] str)
     {
         if (socketConnection == null)
         {
