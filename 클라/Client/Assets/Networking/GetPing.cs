@@ -15,8 +15,10 @@ public class GetPing : oNetworkManager
 	{
 		NetDataReader.GetInstace().Reder[Class.ping] = (data) =>
 		{
-
-		};
+            var m_ping = test.GetRootAstest(data.ByteBuffer);
+            var t = DateTime.Now.ToBinary() - m_ping.Num;
+            iping.Value = (int)(t * 0.0001f);
+        };
 
 		iping.AddEvent(() =>
 		{

@@ -22,7 +22,8 @@ public class TCPClient : oNetworkManager
 
     ConcurrentQueue<Action> actions = new ConcurrentQueue<Action>();
 
-    
+    ConcurrentQueue<Action> pingQueue = new ConcurrentQueue<Action>();
+
 
     #region private members 	
     private TcpClient socketConnection;
@@ -87,29 +88,20 @@ public class TCPClient : oNetworkManager
                         Array.Copy(bytes, 0, incommingData, 0, length);
                         ByteBuffer bb = new ByteBuffer(incommingData);
 
-
                         Base ctype = Base.GetRootAsBase(bb);
-                        //Debug.Log("받아온 데이터 수.");
-
+                        
                         var Data = ctype;
-						long t = 1;
-
 						if (Data.CType == Class.ping)
 						{
-							t = (System.DateTime.Now.ToBinary() - ((long)ping.GetRootAsping(ctype.ByteBuffer).Time));
-						}
+                            pingQueue.Enqueue(() => { NetDataReader.GetInstace().Reder[Data.CType](Data); });
+                            break;
+                        }
 
-						var m_t = t;
                         actions.Enqueue(()=>
                         {
 
                             if (NetDataReader.GetInstace().Reder.ContainsKey(Data.CType))
                             {
-								//Debug.Log("데이터 받음. [" + Data.CType + "]" + "[" + length + "]");	
-								if (Data.CType == Class.ping)
-								{
-									pingManager.GetPings(m_t);
-								}
 								NetDataReader.GetInstace().Reder[Data.CType](Data);
                             }
                             else
@@ -129,7 +121,16 @@ public class TCPClient : oNetworkManager
     }
     private void Update()
     {
-        
+        if (!pingQueue.IsEmpty)
+        {
+            foreach (var i in pingQueue)
+            {
+                Action act;
+                pingQueue.TryDequeue(out act);
+                act();
+            }
+        }
+
         if (!actions.IsEmpty)
         {
             foreach (var i in actions)
