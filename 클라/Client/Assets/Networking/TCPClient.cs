@@ -89,26 +89,27 @@ public class TCPClient : oNetworkManager
                         ByteBuffer bb = new ByteBuffer(incommingData);
 
                         Base ctype = Base.GetRootAsBase(bb);
-                        
+
                         var Data = ctype;
-						if (Data.CType == Class.ping)
-						{
-                            pingQueue.Enqueue(() => { NetDataReader.GetInstace().Reder[Data.CType](Data); });
-                            break;
-                        }
-
-                        actions.Enqueue(()=>
+                        if (Data.CType == Class.ping)
                         {
+                            pingQueue.Enqueue(() => { NetDataReader.GetInstace().Reder[Data.CType](Data); });
+                        }
+                        else
+                        {
+                            actions.Enqueue(() =>
+                            {
 
-                            if (NetDataReader.GetInstace().Reder.ContainsKey(Data.CType))
-                            {
-								NetDataReader.GetInstace().Reder[Data.CType](Data);
-                            }
-                            else
-                            {
-                                Debug.Log("잘못된 데이터가 옴.\n[" + Data.CType + "]" + "[" + length + "]");
-                            }
-                        });
+                                if (NetDataReader.GetInstace().Reder.ContainsKey(Data.CType))
+                                {
+                                    NetDataReader.GetInstace().Reder[Data.CType](Data);
+                                }
+                                else
+                                {
+                                    Debug.Log("잘못된 데이터가 옴.\n[" + Data.CType + "]" + "[" + length + "]");
+                                }
+                            });
+                        }
                     }
                 }
             }

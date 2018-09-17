@@ -6,7 +6,6 @@ using System.Collections.Concurrent;
 
 public class GetPing : oNetworkManager
 {
-	float dt = 0f;
 	public static ReAct<int> iping = new ReAct<int>();
 	public static ReAct<int> MaxPing = new ReAct<int>();
 	NetPingUpdater ping = new NetPingUpdater();
@@ -37,7 +36,6 @@ public class GetPing : oNetworkManager
 
 	private void Update()
 	{
-		dt += Time.deltaTime;
 	}
 
 	public override void NetworkStarting()
