@@ -19,6 +19,13 @@ public class SlotsManager : MonoBehaviour
             }
         }
     }
+
+
+    public void Add(PlayerSystem item,int n)
+    {
+        Slots[n].Item = item;
+    }
+
     void OnDisable()
     {
         BPlayer.MainPlayer._isCamera = true;

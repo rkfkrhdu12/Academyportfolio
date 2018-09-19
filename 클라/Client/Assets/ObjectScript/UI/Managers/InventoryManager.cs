@@ -7,6 +7,7 @@ using FlatBuffers;
 public class InventoryManager : SlotsManager
 {
     static InventoryManager instance;
+    Queue<int> slotNumber;
 
     void Awake()
     {
@@ -20,6 +21,11 @@ public class InventoryManager : SlotsManager
     {
         NetDataReader.GetInstace().Reder[Class.fItem] = (data) => {
             var item = fItem.GetRootAsfItem(data.ByteBuffer);
+
+            AItem aItem = new AItem();
+
+            InventoryManager.AddItem(aItem.GetfItemT(item).Get(), item.Id);
+
 			Debug.Log("item data recv name : "+item.Name);
         };
 
@@ -32,7 +38,10 @@ public class InventoryManager : SlotsManager
 
 
 
-
+    public static void AddItem(PlayerSystem Item, int S_n)
+    {
+        instance.Add(Item, S_n);
+    }
 
     public static void AddItem(PlayerSystem Item)
     {

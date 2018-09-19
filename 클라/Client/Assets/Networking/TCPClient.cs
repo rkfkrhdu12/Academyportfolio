@@ -17,8 +17,8 @@ public class TCPClient : oNetworkManager
 
 
 
-	public int MY_ID;
-	public GetPing pingManager;
+    public int MY_ID;
+    public GetPing pingManager;
 
     ConcurrentQueue<Action> actions = new ConcurrentQueue<Action>();
 
@@ -39,13 +39,13 @@ public class TCPClient : oNetworkManager
     {
         Instance = this;
     }
-    
+
 
     public void Send(byte[] str)
     {
         SendChat(str);
     }
-    public void Send( string str )
+    public void Send(string str)
     {
         SendChat(str);
     }
@@ -67,8 +67,8 @@ public class TCPClient : oNetworkManager
             Debug.Log("On client connect exception " + e);
         }
     }
-    
-    
+
+
 
     private void ListenForData()
     {
@@ -122,15 +122,13 @@ public class TCPClient : oNetworkManager
     }
     private void Update()
     {
-        if (!pingQueue.IsEmpty)
+        foreach (var i in pingQueue)
         {
-            foreach (var i in pingQueue)
-            {
-                Action act;
-                pingQueue.TryDequeue(out act);
-                act();
-            }
+            Action act;
+            pingQueue.TryDequeue(out act);
+            act();
         }
+
 
         if (!actions.IsEmpty)
         {
@@ -146,7 +144,7 @@ public class TCPClient : oNetworkManager
 
 
 
-	void SendChat(byte[] str)
+    void SendChat(byte[] str)
     {
         if (socketConnection == null)
         {
@@ -168,7 +166,7 @@ public class TCPClient : oNetworkManager
             }
         }
         catch (SocketException socketException)
-        { 
+        {
             Debug.Log("Socket exception: " + socketException);
         }
     }
@@ -178,7 +176,7 @@ public class TCPClient : oNetworkManager
 
 
 
-    private void SendChat( string str )
+    private void SendChat(string str)
     {
         if (socketConnection == null)
         {
@@ -186,7 +184,7 @@ public class TCPClient : oNetworkManager
             return;
         }
         try
-        {		
+        {
             NetworkStream stream = socketConnection.GetStream();
             Debug.Log("채팅보낼 준비.");
             if (stream.CanWrite)
