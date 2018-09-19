@@ -18,12 +18,14 @@ public class fItemT
         val[5] = item.Val6;
         val[6] = item.Val7;
         val[7] = item.Val8;
+
+        count = item.Count;
     }
 
     string name;
     int type;
     int[] val = new int[8];
-
+    int count;
 
     public BItem Get()
     {
@@ -34,7 +36,7 @@ public class fItemT
             case 3:
                 item = new Stuff();
                 item._name = name;
-                item.Number.Value = 5;
+                item.Number.Value = count;
                 ((Stuff)item).Hp = val[0];
                 break;
             default :

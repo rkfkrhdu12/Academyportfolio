@@ -24,7 +24,7 @@ public class InventoryManager : SlotsManager
 
             AItem aItem = new AItem();
 
-            InventoryManager.AddItem(aItem.GetfItemT(item).Get(), item.Id);
+            AddItem(aItem.GetfItemT(item).Get(), item.Id);
 
 			Debug.Log("item data recv name : "+item.Name);
         };
