@@ -7,7 +7,6 @@ using FlatBuffers;
 public class InventoryManager : SlotsManager
 {
     static InventoryManager instance;
-    Queue<int> slotNumber;
 
     void Awake()
     {
@@ -24,7 +23,7 @@ public class InventoryManager : SlotsManager
 
             AItem aItem = new AItem();
 
-            AddItem(aItem.GetfItemT(item).Get(), item.Id);
+            AddItem(aItem.GetfItemT(item).Get(), item.Val8);
 
 			Debug.Log("item data recv name : "+item.Name);
         };
@@ -36,7 +35,21 @@ public class InventoryManager : SlotsManager
 
 
 
+    public static void SwapItem()
+    {
+        int[] inv = new int[30];
+        for(int i = 0; i < 30; i++)
+        {
+            if (instance.Slots[i].Item != null)
+            {
+                inv[i] = instance.Slots[i].Item.id;
+            }
+        }
 
+        var fbb = new FlatBufferBuilder(1);
+        fbb.Finish(fInventory.CreatefInventory(fbb, Class.fInventory, fInventory.CreateSlotVector(fbb, inv)).Value);
+        TCPClient.Instance.Send(fbb.SizedByteArray());
+    }
 
     public static void AddItem(PlayerSystem Item, int S_n)
     {

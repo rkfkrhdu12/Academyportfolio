@@ -32,21 +32,21 @@ public class ItemManager : MonoBehaviour
 
         stuff._name = "포션";
         stuff._info = "기본포션이다.";
-        stuff.Number.Value = 5;
+        //stuff.Number.Value = 5;
         stuff.Hp = 10;
         stuff.icon = icon_3;
 
         stuff2._name = "포션2";
         stuff2._info = "기본포션2이다.";
-        stuff2.Number.Value = 5;
+        //stuff2.Number.Value = 5;
         stuff2.Hp = 5;
         stuff2.icon = icon_3;
 
 
 
-        InventoryManager.AddItem(weapon);
-        InventoryManager.AddItem(armor);
-        InventoryManager.AddItem(stuff);
-        InventoryManager.AddItem(stuff2);
+        //InventoryManager.AddItem(weapon);
+        //InventoryManager.AddItem(armor);
+        //InventoryManager.AddItem(stuff);
+        //InventoryManager.AddItem(stuff2);
     }
 }

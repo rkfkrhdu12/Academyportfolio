@@ -119,7 +119,11 @@ public class Slot : MonoBehaviour
 
     public virtual void Equipment()
     {
-        if (TargetSlot && (TargetSlot.type == type)) ItemSwap();
+        if (TargetSlot && (TargetSlot.type == type))
+        {
+            ItemSwap();
+            InventoryManager.SwapItem();
+        }
         Return();
     }
 

@@ -20,10 +20,13 @@ public class fItemT
         val[7] = item.Val8;
 
         count = item.Count;
+
+        id = item.Id;
     }
 
     string name;
     int type;
+    int id;
     int[] val = new int[8];
     int count;
 
@@ -36,6 +39,7 @@ public class fItemT
             case 3:
                 item = new Stuff();
                 item._name = name;
+                item.id = id;
                 item.Number.Value = count;
                 ((Stuff)item).Hp = val[0];
                 break;
