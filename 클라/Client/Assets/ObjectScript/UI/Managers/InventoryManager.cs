@@ -33,10 +33,19 @@ public class InventoryManager : SlotsManager
         };
     }
 
-    public static void AcquireItems(PlayerSystem item, int itemCode)
+
+    private void OnGUI()
+    {
+        if (GUI.Button(new Rect(10, 10, 200, 50), "Item 추가!"))
+        {
+            AcquireItems(1, 2);
+        }
+    }
+
+    public static void AcquireItems(int itemCode, int count)
     {
         var fbb = new FlatBufferBuilder(1);
-        fbb.Finish(fItem.CreatefItem(fbb, Class.fItem, itemCode, fbb.CreateString(""), 0, 0, 0, 0, 0, 0, 0, 0, 0, item.Number.Value).Value);
+        fbb.Finish(fItem.CreatefItem(fbb, Class.fItem, itemCode, fbb.CreateString(""), -1, 0, 0, 0, 0, 0, 0, 0, 0, count).Value);
         TCPClient.Instance.Send(fbb.SizedByteArray());
     }
 

@@ -43,7 +43,6 @@ public class ItemManager : MonoBehaviour
         stuff2.icon = icon_3;
 
 
-
         //InventoryManager.AddItem(weapon);
         //InventoryManager.AddItem(armor);
         //InventoryManager.AddItem(stuff);
