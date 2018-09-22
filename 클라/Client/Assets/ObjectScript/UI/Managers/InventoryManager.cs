@@ -33,7 +33,12 @@ public class InventoryManager : SlotsManager
         };
     }
 
-
+    public static void AcquireItems(PlayerSystem item, int itemCode)
+    {
+        var fbb = new FlatBufferBuilder(1);
+        fbb.Finish(fItem.CreatefItem(fbb, Class.fItem, itemCode, fbb.CreateString(""), 0, 0, 0, 0, 0, 0, 0, 0, 0, item.Number.Value).Value);
+        TCPClient.Instance.Send(fbb.SizedByteArray());
+    }
 
     public static void SwapItem()
     {
