@@ -38,7 +38,7 @@ public class InventoryManager : SlotsManager
     {
         if (GUI.Button(new Rect(10, 10, 200, 50), "Item 추가!"))
         {
-            AcquireItems(1, 2);
+            AcquireItems(2, 2);
         }
     }
 
