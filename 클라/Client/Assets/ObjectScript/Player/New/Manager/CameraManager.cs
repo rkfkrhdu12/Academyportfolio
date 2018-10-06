@@ -24,8 +24,8 @@ public class CameraManager : MonoBehaviour
 
     public void Start()
     {
-        cameraTrs = GameObject.FindWithTag("CameraParent").transform;
-        mainCamera = cameraTrs.GetChild(0).GetComponent<Camera>();
+        //cameraTrs = GameObject.FindWithTag("CameraParent").transform;
+        //mainCamera = cameraTrs.GetChild(0).GetComponent<Camera>();
 
         _isCamera = true;
     }

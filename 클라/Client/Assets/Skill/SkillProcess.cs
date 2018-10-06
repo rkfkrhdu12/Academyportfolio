@@ -23,12 +23,16 @@ public class SkillProcess : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
+
+
         if (other.gameObject.GetComponent<oCreature>() != null)
         {
             if (other.gameObject.GetComponent<oCreature>() != GetComponentInParent<oCreature>())
             {
                 var col = gameObject.GetComponent<Collider>();
                 HitCallBack(other, col);
+
+                Debug.Log("setEffet\n" + EffectName);
                 ShowEffect(col, EffectName);
             }
             if (isOnce) { gameObject.SetActive(false); }

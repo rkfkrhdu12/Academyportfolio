@@ -76,6 +76,7 @@ public class TCPClient : oNetworkManager
         {
             socketConnection = new TcpClient(Url, port);
             socketConnection.NoDelay = true;
+            
             Byte[] bytes = new Byte[1024];
             while (true)
             {

@@ -17,9 +17,9 @@ public class NetHP_Bar : MonoBehaviour {
             {
                 float max = GetComponentInParent<oCreature>().MaximumHP;
                 float curr = GetComponentInParent<oCreature>().CurrentHP.Value;
-                float size = (curr / max) * 100;
+                float size = (curr / max);
 
-                HPBar.GetComponent<RectTransform>().sizeDelta = new Vector2(size * 0.02f, 0.14f);
+                HPBar.GetComponent<RectTransform>().sizeDelta = new Vector2(size * 4f, 0.04f);
             };
             action();
             GetComponentInParent<oCreature>().CurrentHP.AddEvent(action);

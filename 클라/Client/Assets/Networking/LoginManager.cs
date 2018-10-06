@@ -12,8 +12,10 @@ public class LoginManager : oNetworkManager
     [SerializeField] GameObject LoginUI;
     public Text[] t = new Text[2];
 
+    public string autoID;
+    public string autoPASS;
 
-
+    float dt;
 
     private void Awake()
     {
@@ -38,6 +40,27 @@ public class LoginManager : oNetworkManager
                 Debug.Log("로그인 실패.");
             }
         };
+    }
+    bool stop =false;
+    private void Update()
+    {
+        dt += Time.deltaTime;
+        if (dt > 1f && !stop)
+        {
+            autoLogin();
+            stop = true;
+        }
+    }
+
+    public void autoLogin()
+    {
+        NetworkSendManager.instance.actions.Enqueue(()=> {
+            if (autoID != "")
+            {
+                SendLoginData(true, autoID, autoPASS);
+            }
+        });
+
     }
 
     public void login()

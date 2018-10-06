@@ -36,6 +36,7 @@ public class NetPlayerUpdater : UpdaterEvent{
         Player.AddVertical(fbb, animator.GetFloat("Vertical"));
         Player.AddHorizontal(fbb, animator.GetFloat("Horizontal"));
         Player.AddJump(fbb, animator.GetBool("Jump"));
+        Player.AddAnicode(fbb, animator.GetFloat("Skill_id"));
         Player.AddAttack(fbb, animator.GetBool("Attack"));
         Player.AddRun(fbb, animator.GetBool("Run"));
         Player.AddID(fbb,id);

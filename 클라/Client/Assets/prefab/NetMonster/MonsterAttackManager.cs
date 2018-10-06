@@ -19,7 +19,7 @@ public class MonsterAttackManager : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.GetComponent<oCreature>() && isAttackAble)
+        if (other.gameObject.GetComponent<oCreature>() && isAttackAble && other.GetComponent<oNetworkIdentity>().type != oNetworkIdentity.ObjType.monster)
         {
             isAttackAble = false;
             AttackRange.SetActive(false);

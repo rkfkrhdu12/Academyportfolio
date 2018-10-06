@@ -59,6 +59,8 @@ public class OtherPlayers : MonoBehaviour {
                 FirstPlayerData.HPLim,
                 FirstPlayerData.MP,
                 FirstPlayerData.MPLim,
+                FirstPlayerData.EXP,
+                FirstPlayerData.Attack,
                 FirstPlayerData.LV,
                 FirstPlayerData.ID
             ).Value);
@@ -71,6 +73,10 @@ public class OtherPlayers : MonoBehaviour {
             MainPlayer.GetComponent<oCreature>().Data_Update(_PlayerStat);
             MainPlayer.GetComponent<oCreature>().Data_Update(pos);
             MainPlayer.GetComponent<NetworkObject>().m_CurrentHP.NoEventSet(_PlayerStat.HP);
+            MainPlayer.GetComponent<NetworkObject>().m_CurrentMP.NoEventSet(_PlayerStat.MP);
+            MainPlayer.GetComponent<NetworkObject>().m_CurrentEXP.NoEventSet(_PlayerStat.EXP);
+            MainPlayer.GetComponent<NetworkObject>().m_CurrentATK.NoEventSet(_PlayerStat.Attack);
+            MainPlayer.GetComponent<NetworkObject>().m_CurrentLV.NoEventSet(_PlayerStat.LV);
 
             Vector3 v3 = new Vector3();
             v3.Set(pos.X, pos.Y, pos.Z);
@@ -91,7 +97,10 @@ public class OtherPlayers : MonoBehaviour {
             {
                 MainPlayer.GetComponent<oCreature>().Data_Update(_PlayerStat);
                 MainPlayer.GetComponent<NetworkObject>().m_CurrentHP.NoEventSet(_PlayerStat.HP);
-
+                MainPlayer.GetComponent<NetworkObject>().m_CurrentMP.NoEventSet(_PlayerStat.MP);
+                MainPlayer.GetComponent<NetworkObject>().m_CurrentEXP.NoEventSet(_PlayerStat.EXP);
+                MainPlayer.GetComponent<NetworkObject>().m_CurrentATK.NoEventSet(_PlayerStat.Attack);
+                MainPlayer.GetComponent<NetworkObject>().m_CurrentLV.NoEventSet(_PlayerStat.LV);
             }
             else if(OPlayers.ContainsKey(_PlayerStat.ID))
             {

@@ -15,6 +15,7 @@ public class ReAct<T>{
         }
         set
         {
+            prevEvent();
             _Value = value;
             foreach (var i in eList)
             {
@@ -25,6 +26,7 @@ public class ReAct<T>{
 
     }
     public Action Event = ()=>{ };
+    public Action prevEvent = () => { };
 
     List<Action> eList = new List<Action>();
     List<Action> OeList = new List<Action>();

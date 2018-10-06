@@ -31,6 +31,7 @@ public class OtherPlayer : oNetworkManager
         GetComponent<Animator>().SetFloat("Horizontal", tr.Horizontal);
         GetComponent<Animator>().SetBool("Jump", tr.Jump);
         GetComponent<Animator>().SetBool("Attack", tr.Attack);
+        GetComponent<Animator>().SetFloat("Skill_id", tr.Anicode);
         GetComponent<Animator>().SetBool("Run", tr.Run);
 
         LerpManager.LerpPos(ref EndPos, Vel);

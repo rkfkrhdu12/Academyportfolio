@@ -36,11 +36,20 @@ public class fItemT
 
         switch (type)
         {
+            case 1:
+                item = new Weapon();
+                item._name = name;
+                item.id = id;
+                item.Number.Value = count;
+                item.icon = Resources.Load<Sprite>(name);
+                ((Weapon)item).OffensePower = val[0];
+                break;
             case 3:
                 item = new Stuff();
                 item._name = name;
                 item.id = id;
                 item.Number.Value = count;
+                item.icon = Resources.Load<Sprite>(name);
                 ((Stuff)item).Hp = val[0];
                 break;
             default :

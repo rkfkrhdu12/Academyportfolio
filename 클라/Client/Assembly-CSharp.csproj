@@ -79,6 +79,8 @@
     <Compile Include="Assets\flatbuffer\Table.cs" />
     <Compile Include="Assets\Inventory,Itme\AItem.cs" />
     <Compile Include="Assets\LookCam.cs" />
+    <Compile Include="Assets\MaxStatManager.cs" />
+    <Compile Include="Assets\MonsterManager.cs" />
     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Antialiasing.cs" />
     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Bloom.cs" />
     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\BloomAndFlares.cs" />
@@ -122,10 +124,11 @@
     <Compile Include="Assets\Networking\CreateNetworkObject.cs" />
     <Compile Include="Assets\Networking\flat\Base.cs" />
     <Compile Include="Assets\Networking\flat\Class.cs" />
-    <Compile Include="Assets\Networking\flat\Equipment.cs" />
+    <Compile Include="Assets\Networking\flat\fEquipSlots.cs" />
     <Compile Include="Assets\Networking\flat\fInventory.cs" />
     <Compile Include="Assets\Networking\flat\FirstCharacterData.cs" />
     <Compile Include="Assets\Networking\flat\fItem.cs" />
+    <Compile Include="Assets\Networking\flat\fNetEffect.cs" />
     <Compile Include="Assets\Networking\flat\id.cs" />
     <Compile Include="Assets\Networking\flat\Login.cs" />
     <Compile Include="Assets\Networking\flat\Monster.cs" />
@@ -133,13 +136,13 @@
     <Compile Include="Assets\Networking\flat\ping.cs" />
     <Compile Include="Assets\Networking\flat\Player.cs" />
     <Compile Include="Assets\Networking\flat\PlayerStat.cs" />
-    <Compile Include="Assets\Networking\flat\Pos.cs" />
     <Compile Include="Assets\Networking\flat\SendMeStat.cs" />
     <Compile Include="Assets\Networking\flat\test.cs" />
     <Compile Include="Assets\Networking\flat\Vec3.cs" />
     <Compile Include="Assets\Networking\GetPing.cs" />
     <Compile Include="Assets\Networking\LoginManager.cs" />
     <Compile Include="Assets\Networking\NetDataReader.cs" />
+    <Compile Include="Assets\Networking\NetEffectManager.cs" />
     <Compile Include="Assets\Networking\NetworkObject.cs" />
     <Compile Include="Assets\Networking\NetworkSendManager.cs" />
     <Compile Include="Assets\Networking\oNetworkManager.cs" />
@@ -199,16 +202,21 @@
     <Compile Include="Assets\ObjectScript\UI\Slot\Slot.cs" />
     <Compile Include="Assets\ObjectScript\UI\WInMove.cs" />
     <Compile Include="Assets\oNetworkIdentity.cs" />
+    <Compile Include="Assets\PlayerStateManager.cs" />
     <Compile Include="Assets\prefab\NetMonster\MonsterAttackManager.cs" />
     <Compile Include="Assets\prefab\NetPlayer\PlayerAttackManager.cs" />
     <Compile Include="Assets\prefab\NetPlayer\PlayerSystemManager.cs" />
     <Compile Include="Assets\prefab\NetPlayer\UI\PlayerHUD.cs" />
     <Compile Include="Assets\ResourcesLoader.cs" />
+    <Compile Include="Assets\SATManager.cs" />
     <Compile Include="Assets\ServerSpeedTest\SpeedTest_Send.cs" />
     <Compile Include="Assets\Skill\SkillProcess.cs" />
+    <Compile Include="Assets\StateWinManager.cs" />
     <Compile Include="Assets\TriggerEvent.cs" />
     <Compile Include="Assets\UI\UImanager.cs" />
     <Compile Include="Assets\UI_Manager.cs" />
+    <Compile Include="Assets\WeaponManager.cs" />
+    <Compile Include="Assets\이펙트1\script\sprite_sheet.cs" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
@@ -234,8 +242,11 @@
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ContrastComposite.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\FisheyeShader.shader" />
+    <None Include="Assets\이펙트1\shaders\emmision_particle.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
+    <None Include="Assets\이펙트1\shaders\multypower_particle.shader" />
+    <None Include="Assets\이펙트1\README.txt" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
@@ -270,6 +281,7 @@
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Adaptation.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrain.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
+    <None Include="Assets\이펙트1\shaders\mesh_dissolve_particel.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
@@ -281,22 +293,23 @@
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\Blend.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
+    <None Include="Assets\이펙트1\shaders\face_power_particle.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/ahn yu chan/Desktop/git/Academyportfolio/클라/Client/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/anyc1/OneDrive/바탕 화면/myGit/Academyportfolio/클라/Client/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/ahn yu chan/Desktop/git/Academyportfolio/클라/Client/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/anyc1/OneDrive/바탕 화면/myGit/Academyportfolio/클라/Client/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/ahn yu chan/Desktop/git/Academyportfolio/클라/Client/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/anyc1/OneDrive/바탕 화면/myGit/Academyportfolio/클라/Client/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/ahn yu chan/Desktop/git/Academyportfolio/클라/Client/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/anyc1/OneDrive/바탕 화면/myGit/Academyportfolio/클라/Client/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -497,13 +510,13 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.6f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:/Users/ahn yu chan/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+      <HintPath>C:/Users/anyc1/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing">
-      <HintPath>C:/Users/ahn yu chan/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll</HintPath>
+      <HintPath>C:/Users/anyc1/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>C:/Users/ahn yu chan/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/anyc1/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.6f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

@@ -21,11 +21,11 @@ public class InventoryManager : SlotsManager
         NetDataReader.GetInstace().Reder[Class.fItem] = (data) => {
             var item = fItem.GetRootAsfItem(data.ByteBuffer);
 
+
             AItem aItem = new AItem();
 
             AddItem(aItem.GetfItemT(item).Get(), item.Val8);
-
-			Debug.Log("item data recv name : "+item.Name);
+            Debug.Log("item data recv name : " + item.Name);
         };
 
         NetDataReader.GetInstace().Reder[Class.fInventory] = (data) => {
@@ -38,7 +38,11 @@ public class InventoryManager : SlotsManager
     {
         if (GUI.Button(new Rect(10, 10, 200, 50), "Item 추가!"))
         {
-            AcquireItems(2, 2);
+            AcquireItems(0, 1);
+        }
+        if (GUI.Button(new Rect(10, 70, 200, 50), "weapon 추가!"))
+        {
+            AcquireItems(3, 1);
         }
     }
 
@@ -48,6 +52,7 @@ public class InventoryManager : SlotsManager
         fbb.Finish(fItem.CreatefItem(fbb, Class.fItem, itemCode, fbb.CreateString(""), -1, 0, 0, 0, 0, 0, 0, 0, 0, count).Value);
         TCPClient.Instance.Send(fbb.SizedByteArray());
     }
+    
 
     public static void SwapItem()
     {

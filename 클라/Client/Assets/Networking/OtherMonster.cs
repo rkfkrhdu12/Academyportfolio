@@ -36,6 +36,7 @@ public class OtherMonster : MonoBehaviour
     {
         GetComponent<oCreature>().CurrentHP.AddEvent(() =>
         {
+            Debug.Log("몬스터 때림");
             netMonsterStat.Updater(gameObject);
         });
     }

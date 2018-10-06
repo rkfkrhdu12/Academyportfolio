@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -25,7 +26,7 @@ public class AttackObj
     public float CoolTime;
 
     public Action EndCallBack;
-    public Action<Collider, Collider> HitCallBack;
+    public Action<Collider, Collider> HitCallBack = (c,c2) => { };
 
     public void setCol(bool _s)
     {
@@ -52,6 +53,13 @@ public class AttackerManager : MonoBehaviour
     Dictionary<AttackObj, Action> objs = new Dictionary<AttackObj, Action>();
     Queue<AttackObj> RemoveManager = new Queue<AttackObj>();
 
+
+    public GameObject Sowrd;
+
+
+
+
+
     public void CallAttack(AttackObj obj)
     {
         var _obj = obj;
@@ -73,6 +81,14 @@ public class AttackerManager : MonoBehaviour
         _obj.AttackStart();
     }
 
+    public void SATStart(int damage)
+    {
+        Sowrd.GetComponent<SATManager>().AttackStart(damage);
+    }
+    public void SATEnd()
+    {
+        Sowrd.GetComponent<SATManager>().AttackEnd();
+    }
 
     void Update()
     {

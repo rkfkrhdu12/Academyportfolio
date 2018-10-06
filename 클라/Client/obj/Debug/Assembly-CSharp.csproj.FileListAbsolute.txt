@@ -1446,3 +1446,7 @@ C:\Users\rkfkr\Documents\GitHub\Academyportfolio\클라\Client\Temp\bin\Debug\Un
 C:\Users\rkfkr\Documents\GitHub\Academyportfolio\클라\Client\Temp\bin\Debug\UnityEngine.ParticlesLegacyModule.xml
 C:\Users\rkfkr\Documents\GitHub\Academyportfolio\클라\Client\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 >>>>>>> a0ef1a394d3e630c1faa44ae20f3ea7a4f15b377
+C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\bin\Debug\System.Numerics.dll
+C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\bin\Debug\UnityEditor.UI.dll
+C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\bin\Debug\UnityEditor.UI.xml
