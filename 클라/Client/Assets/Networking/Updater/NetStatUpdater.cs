@@ -18,7 +18,7 @@ public class NetStatUpdater{
         if (Obj.GetComponent<oNetworkIdentity>().type == oNetworkIdentity.ObjType.monster)
         {
             fbb.Finish(MonsterStat.CreateMonsterStat(fbb,Class.MonsterStat,
-                oCreature.CurrentHP.Value,
+                oCreature.CurrentHP.Value,0,
                 id
                 ).Value);
         }

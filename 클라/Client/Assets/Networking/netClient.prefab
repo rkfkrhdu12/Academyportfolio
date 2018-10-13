@@ -71,6 +71,8 @@ MonoBehaviour:
   t:
   - {fileID: 0}
   - {fileID: 0}
+  autoID: 1
+  autoPASS: 1
 --- !u!114 &114608720924687456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SendRate: 0.01
-  Url: 35.229.140.57
+  Url: localhost
   port: 12588
   MY_ID: 0
+  pingManager: {fileID: 0}

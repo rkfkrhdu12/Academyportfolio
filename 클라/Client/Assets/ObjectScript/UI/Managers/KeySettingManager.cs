@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class KeySettingManager : MonoBehaviour {
+public class KeySettingManager : SlotsManager
+{
+    public static KeySettingManager instance;
 
     public Dictionary<KeyCode, Action> KeyEvent = new Dictionary<KeyCode, Action>();
     public List<KeyCode> RemoveList = new List<KeyCode>();
@@ -11,11 +13,24 @@ public class KeySettingManager : MonoBehaviour {
 
     public Action[] MouseButton = new Action[2];
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    public static void AddKey(PlayerSystem act)
+    {
+        instance.Add(act);
+    }
 
     private void Start()
     {
         MouseButton[0] = () => { };
         MouseButton[1] = () => { };
+
+
+        for (int i = 0; i < SlotParent.transform.childCount; i++)
+            Slots[i] = SlotParent.transform.GetChild(i).GetComponent<KeySlot>();
     }
 
     void Update()

@@ -88,5 +88,11 @@ public class SkillManager : MonoBehaviour
         SkillsManager.AddSkill(skill2);
         SkillsManager.AddSkill(skill3);
         SkillsManager.AddSkill(skill4);
+
+
+
+
+
+        KeySettingManager.AddKey(skill2);
     }
 }

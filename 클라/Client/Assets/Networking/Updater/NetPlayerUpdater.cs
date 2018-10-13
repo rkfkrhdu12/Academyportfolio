@@ -40,6 +40,7 @@ public class NetPlayerUpdater : UpdaterEvent{
         Player.AddAttack(fbb, animator.GetBool("Attack"));
         Player.AddRun(fbb, animator.GetBool("Run"));
         Player.AddID(fbb,id);
+
         return Player.EndPlayer(fbb);
     }
 

@@ -1,11 +1,12 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/anyc1/OneDrive/바탕 화면/myGit/Academyportfolio/클라/GameTest/ServerTest.exe
+C:/Users/Atents/Desktop/git/Academyportfolio/클라/GameTest/ServerTest.exe
 SceneListBegin?
 Assets/MainScene/Main.unity
 SceneListEnd?
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.OtherMonster
 c422dd62785a6d0afa870fbd111886ce Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.MaxStatManager
 7b803eb2910e9b4cd5e521ae07b9f7d6 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
 42c6d4740f8c8c5b548f28639031cadc Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.TiltShift
 b3640758fe6014d02fc138f20831ffbd Assembly-CSharp.dll:.UI_Manager
@@ -247,6 +248,7 @@ a8f862d02793401df4e1175a7afbfa25 Assembly-CSharp.dll:.OtherMonsters
 321ffb790f3ae3abf66acbd2687652e0 Assembly-CSharp.dll:.OtherPlayer
 7b2a2357fa69694591bc0572746ac872 Assembly-CSharp.dll:.ItemSlot
 7b2a2357fa69694591bc0572746ac872 Assembly-CSharp.dll:.SkillSlot
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.MonsterManager
 e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 bd57674768d88af20344e9f680801c2d Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.DepthOfFieldDeprecated
 df03e2ffa8b3251f71a6c2235d50c66b Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.Fisheye
@@ -255,14 +257,12 @@ df03e2ffa8b3251f71a6c2235d50c66b Assembly-CSharp.dll:UnityStandardAssets.ImageEf
 31f2c0c2b8434cd46855a01416f210e3 Assembly-CSharp.dll:.WeaponManager
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.OnServerStart
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.PostEffectsBase
+6388d0bd63770fd1389f5bcfd5d32470 Assembly-CSharp.dll:.StateWinManager
 1ea93faee784a05b93bf0db7ee20c422 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.EdgeDetection
 c1fe05a7d5890348d55a48b3ca54863e Assembly-CSharp.dll:.InputKeyManager
 93307bd34e39d73fd24e00ec39c25a91 Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.PlayerStateManager
 985c690377822f41654d5f68210987d9 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ColorCorrectionLookup
 f59ca19b2477a0f8545617e6a1dec4b4 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.Tonemapping
 fcbe88630285dcb5be8349df7918f1e2 Assembly-CSharp.dll:.SlotsManager
 e7afa3db7843f4f4a8c79a72bf9e6891 Assembly-CSharp.dll:.NetworkSendManager
-486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.MaxStatManager
-486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.PlayerStateManager
-6388d0bd63770fd1389f5bcfd5d32470 Assembly-CSharp.dll:.StateWinManager
-486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.MonsterManager

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198576723077410786}
   - component: {fileID: 199067444500451450}
   m_Layer: 0
-  m_Name: lighting_exp
+  m_Name: LVUP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

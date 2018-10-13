@@ -43,7 +43,7 @@ public class TCPClient : oNetworkManager
 
     public void Send(byte[] str)
     {
-        SendChat(str);
+        ClientSend(str);
     }
     public void Send(string str)
     {
@@ -76,7 +76,6 @@ public class TCPClient : oNetworkManager
         {
             socketConnection = new TcpClient(Url, port);
             socketConnection.NoDelay = true;
-            
             Byte[] bytes = new Byte[1024];
             while (true)
             {
@@ -145,11 +144,12 @@ public class TCPClient : oNetworkManager
 
 
 
-    void SendChat(byte[] str)
+    void ClientSend(byte[] str)
     {
         if (socketConnection == null)
         {
             Debug.Log("서버가 닫혀있음.");
+            --SpeedTest_Send.sm;
             return;
         }
         try
@@ -157,8 +157,23 @@ public class TCPClient : oNetworkManager
             NetworkStream stream = socketConnection.GetStream();
             if (stream.CanWrite)
             {
-                byte[] clientMessageAsByteArray = str;
+                var fbb = new FlatBufferBuilder(1);
+                fbb.Finish( fheader.Createfheader(fbb,Class.fheader, str.Length).Value);
+                
+
+
+
+                byte[] size = fbb.SizedByteArray();
+                byte[] clientMessageAsByteArray = new byte[str.Length + size.Length];
+
+
+                Array.Copy(size, 0, clientMessageAsByteArray, 0, size.Length);
+                Array.Copy(str, 0, clientMessageAsByteArray, size.Length, str.Length);
+
                 stream.Write(clientMessageAsByteArray, 0, clientMessageAsByteArray.Length);
+
+
+
                 Debug.Log("보낸 데이터 수 ---->");
             }
             else
@@ -172,10 +187,7 @@ public class TCPClient : oNetworkManager
         }
     }
 
-
-
-
-
+    
 
     private void SendChat(string str)
     {

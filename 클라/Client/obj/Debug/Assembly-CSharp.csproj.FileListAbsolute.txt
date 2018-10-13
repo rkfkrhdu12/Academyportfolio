@@ -1450,3 +1450,5 @@ C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\
 C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\bin\Debug\System.Numerics.Vectors.dll
 C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\bin\Debug\UnityEditor.UI.dll
 C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\bin\Debug\UnityEditor.UI.xml
+C:\Users\Atents\Desktop\git\Academyportfolio\클라\Client\Temp\bin\Debug\UnityEditor.UI.dll
+C:\Users\Atents\Desktop\git\Academyportfolio\클라\Client\Temp\bin\Debug\UnityEditor.UI.xml

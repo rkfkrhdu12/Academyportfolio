@@ -529,7 +529,6 @@ GameObject:
   - component: {fileID: 114465325895395344}
   - component: {fileID: 114510173456974772}
   - component: {fileID: 136509363942742552}
-  - component: {fileID: 114881265049506642}
   - component: {fileID: 114060732501334632}
   m_Layer: 0
   m_Name: mon
@@ -1562,21 +1561,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerStay: []
---- !u!114 &114881265049506642
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1680382348260992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a6d24093e6505441a4a8e6824c7ddab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaximumHP: 100
-  CurrentSP: 0
-  MaximumSP: 0
-  Lv: 0
 --- !u!114 &114929818760148964
 MonoBehaviour:
   m_ObjectHideFlags: 1
