@@ -77,7 +77,8 @@ public class OtherPlayers : MonoBehaviour {
             MainPlayer.GetComponent<NetworkObject>().m_CurrentEXP.NoEventSet(_PlayerStat.EXP);
             MainPlayer.GetComponent<NetworkObject>().m_CurrentATK.NoEventSet(_PlayerStat.Attack);
             MainPlayer.GetComponent<NetworkObject>().m_CurrentLV.NoEventSet(_PlayerStat.LV);
-
+            
+            MainPlayer.GetComponent<NetworkObject>().CharacterName.NoEventSet(FirstPlayerData.Name);
             Vector3 v3 = new Vector3();
             v3.Set(pos.X, pos.Y, pos.Z);
 

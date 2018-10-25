@@ -21,9 +21,14 @@ public class SlotsManager : MonoBehaviour
     }
 
 
-    public void Add(PlayerSystem item,int n)
+    public void Add(PlayerSystem item, int n)
     {
-        Slots[n].Item = item;
+        if (Slots[n].Item == null)
+        {
+            Slots[n].Item = item;
+        }
+
+        Slots[n].Item.Number.Value = item.Number.Value;
     }
 
     void OnDisable()

@@ -160,9 +160,7 @@ public class TCPClient : oNetworkManager
                 var fbb = new FlatBufferBuilder(1);
                 fbb.Finish( fheader.Createfheader(fbb,Class.fheader, str.Length).Value);
                 
-
-
-
+                
                 byte[] size = fbb.SizedByteArray();
                 byte[] clientMessageAsByteArray = new byte[str.Length + size.Length];
 

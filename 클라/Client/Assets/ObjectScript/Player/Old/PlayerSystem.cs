@@ -23,9 +23,9 @@ public class PlayerSystem
 
         Number.Event += () =>
         {
-            var fbb = new FlatBufferBuilder(1);
-            fbb.Finish(fItem.CreatefItem(fbb, Class.fItem,id,fbb.CreateString(""),0,0,0,0,0,0,0,0,0,Number.Value).Value);
-            TCPClient.Instance.Send(fbb.SizedByteArray());
+            //var fbb = new FlatBufferBuilder(1);
+            //fbb.Finish(fItem.CreatefItem(fbb, Class.fItem, id, fbb.CreateString(""), 0, 0, 0, 0, 0, 0, 0, 0, 0, Number.Value).Value);
+            //TCPClient.Instance.Send(fbb.SizedByteArray());
         };
     }
 

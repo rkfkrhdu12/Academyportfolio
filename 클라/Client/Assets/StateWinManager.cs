@@ -35,7 +35,18 @@ public class StateWinManager : MonoBehaviour {
 
         player.m_CurrentLV.AddEvent(Lv_text);
         player.m_CurrentLV.OtherEvent(Lv_text);
+
+
+
+        System.Action NameEv = ()=>
+        {
+            Debug.Log(player.CharacterName.Value);
+            name.text = player.CharacterName.Value;
+        };
+        player.CharacterName.AddEvent(NameEv);
+        player.CharacterName.OtherEvent(NameEv);
     }
+
 
     void HP_text()
     {

@@ -50,6 +50,9 @@ public class Slot : MonoBehaviour
 
     public void SetItemNumber()
     {
+        Debug.Log("Item add!"+gameObject.name);
+
+
         if (number == 0)
         {
             Item = null;

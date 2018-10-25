@@ -10,6 +10,9 @@ public class NetworkObject : oNetworkManager {
     NetPlayerUpdater netPlayer;
     NetStatUpdater netplayerStat = new NetStatUpdater();
 
+
+    public ReAct<string> CharacterName = new ReAct<string>();
+
     public ReAct<int> m_CurrentHP = new ReAct<int>();
     public ReAct<int> m_CurrentMP = new ReAct<int>();
     public ReAct<int> m_CurrentEXP = new ReAct<int>();
@@ -49,7 +52,7 @@ public class NetworkObject : oNetworkManager {
         netplayerStat.Updater(gameObject);
     }
 
-void Start()
+    void Start()
     {
         m_CurrentHP.AddEvent(SetState);
         m_CurrentMP.AddEvent(SetState);
