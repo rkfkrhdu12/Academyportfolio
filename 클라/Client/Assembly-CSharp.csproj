@@ -130,6 +130,7 @@
     <Compile Include="Assets\Networking\flat\FirstCharacterData.cs" />
     <Compile Include="Assets\Networking\flat\fItem.cs" />
     <Compile Include="Assets\Networking\flat\fNetEffect.cs" />
+    <Compile Include="Assets\Networking\flat\fReward.cs" />
     <Compile Include="Assets\Networking\flat\id.cs" />
     <Compile Include="Assets\Networking\flat\Login.cs" />
     <Compile Include="Assets\Networking\flat\Monster.cs" />

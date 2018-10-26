@@ -6,6 +6,9 @@ using UnityEngine.AI;
 
 public class OtherMonster : MonoBehaviour
 {
+    public bool _isDead = false;
+
+
     MovePosLerp LerpManager = new MovePosLerp();
 
     Vector3 End = new Vector3();
@@ -34,12 +37,30 @@ public class OtherMonster : MonoBehaviour
     }
     public void SetStatEvent()
     {
+        GetComponent<oCreature>().CurrentHP.OtherEvent(isDead);
+        GetComponent<oCreature>().CurrentHP.AddEvent(isDead);
+
         GetComponent<oCreature>().CurrentHP.AddEvent(() =>
         {
-            Debug.Log("몬스터 때림");
             netMonsterStat.Updater(gameObject);
         });
     }
+
+    void isDead()
+    {
+        if((GetComponent<oCreature>().CurrentHP.Value < 1) && !_isDead)
+        {
+            _isDead = true;
+            GetComponent<MonsterManager>().SetMonsterDead();
+        }
+        else if(_isDead)
+        {
+            _isDead = false;
+            GetComponent<MonsterManager>().SetMonster();
+        }
+    }
+
+
     void Start()
     {
         //var Ev = GetComponentInChildren<TriggerEvent>();
