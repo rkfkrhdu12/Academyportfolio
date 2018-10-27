@@ -23,8 +23,11 @@ public class StateWinManager : MonoBehaviour {
         player = NetworkObject.mainPlayer.GetComponent<NetworkObject>();
         player.GetComponent<oCreature>().CurrentHP.AddEvent(HP_text);
         player.m_CurrentHP.OtherEvent(HP_text);
-
+        player.m_CurrentHPLim.AddEvent(HP_text);
+        player.m_CurrentHPLim.OtherEvent(HP_text);
         player.m_CurrentMP.AddEvent(MP_text);
+        player.m_CurrentMPLim.AddEvent(HP_text);
+        player.m_CurrentMPLim.OtherEvent(MP_text);
         player.m_CurrentMP.OtherEvent(MP_text);
 
         player.m_CurrentEXP.AddEvent(EXP_text);

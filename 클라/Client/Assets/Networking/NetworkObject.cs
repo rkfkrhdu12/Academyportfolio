@@ -14,7 +14,9 @@ public class NetworkObject : oNetworkManager {
     public ReAct<string> CharacterName = new ReAct<string>();
 
     public ReAct<int> m_CurrentHP = new ReAct<int>();
+    public ReAct<int> m_CurrentHPLim = new ReAct<int>();
     public ReAct<int> m_CurrentMP = new ReAct<int>();
+    public ReAct<int> m_CurrentMPLim = new ReAct<int>();
     public ReAct<int> m_CurrentEXP = new ReAct<int>();
     public ReAct<int> m_CurrentCRI = new ReAct<int>(1);
     public ReAct<int> m_CurrentATK = new ReAct<int>(5);

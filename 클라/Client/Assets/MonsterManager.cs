@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour {
     [SerializeField] GameObject body;
+    [SerializeField] GameObject body2;
     void Start () {
 
     }
@@ -11,6 +12,7 @@ public class MonsterManager : MonoBehaviour {
     public void SetMonsterDead()
     {
         body.SetActive(false);
+        body2.SetActive(false);
         GetComponent<oCreature>().enabled = false;
         GetComponent<MonsterAttackManager>().enabled = false;
         GetComponent<AttackerManager>().enabled = false;
@@ -20,6 +22,7 @@ public class MonsterManager : MonoBehaviour {
     public void SetMonster()
     {
         body.SetActive(true);
+        body2.SetActive(true);
         GetComponent<oCreature>().enabled = true;
         GetComponent<MonsterAttackManager>().enabled = true;
         GetComponent<AttackerManager>().enabled = true;

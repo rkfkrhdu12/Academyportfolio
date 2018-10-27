@@ -16,11 +16,11 @@ public class PlayerStateManager : MonoBehaviour
     public void SetOverState()
     {
 
-        if (Player.m_CurrentHP.Value > MaxStatManager.MAX_HP)
-            Player.m_CurrentHP.Value = MaxStatManager.MAX_HP;
+        if (Player.m_CurrentHP.Value > Player.m_CurrentHPLim.Value)
+            Player.m_CurrentHP.Value = Player.m_CurrentHPLim.Value;
 
-        if (Player.m_CurrentMP.Value > MaxStatManager.MAX_MP)
-            Player.m_CurrentMP.Value = MaxStatManager.MAX_MP;
+        if (Player.m_CurrentMP.Value > Player.m_CurrentMPLim.Value)
+            Player.m_CurrentMP.Value = Player.m_CurrentMPLim.Value;
 
 
         if (Player.m_CurrentEXP.Value > MaxStatManager.MAX_EXP)

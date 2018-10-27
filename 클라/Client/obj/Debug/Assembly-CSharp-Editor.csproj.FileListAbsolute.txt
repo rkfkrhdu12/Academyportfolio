@@ -533,7 +533,6 @@ C:\Users\Atents\Desktop\git\Academyportfolio\클라\Client\Temp\bin\Debug\Syntax
 C:\Users\Atents\Desktop\git\Academyportfolio\클라\Client\Temp\bin\Debug\Boo.Lang.PatternMatching.dll
 C:\Users\Atents\Desktop\git\Academyportfolio\클라\Client\Temp\bin\Debug\Boo.Lang.Useful.dll
 C:\Users\Atents\Desktop\git\Academyportfolio\클라\Client\Temp\bin\Debug\Unity.CecilTools.dll
-C:\Users\Atents\Desktop\git\Academyportfolio\클라\Client\Temp\bin\Debug\Assembly-CSharp.pdb
 C:\Users\Atents\Desktop\git\Academyportfolio\클라\Client\Temp\bin\Debug\UnityEngine.xml
 C:\Users\Atents\Desktop\git\Academyportfolio\클라\Client\Temp\bin\Debug\UnityEditor.xml
 C:\Users\Atents\Desktop\git\Academyportfolio\클라\Client\Temp\bin\Debug\UnityEngine.AIModule.xml

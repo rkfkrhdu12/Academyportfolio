@@ -35,7 +35,7 @@ public class PlayerHUD : MonoBehaviour
 
     void HP_bar()
     {
-        Bar(MaxStatManager.MAX_HP,
+        Bar(player.GetComponent<NetworkObject>().m_CurrentHPLim.Value,
             player.GetComponent<oCreature>().CurrentHP.Value,
             HPBar,
             HPMPBar_Size
@@ -46,7 +46,7 @@ public class PlayerHUD : MonoBehaviour
     void MP_bar()
     {
         Bar(
-            MaxStatManager.MAX_MP,
+            player.GetComponent<NetworkObject>().m_CurrentMPLim.Value,
             player.GetComponent<NetworkObject>().m_CurrentMP.Value,
             MPBar,
             HPMPBar_Size
@@ -57,7 +57,7 @@ public class PlayerHUD : MonoBehaviour
     void EXP_bar()
     {
         Bar(
-            MaxStatManager.MAX_EXP,
+            ((player.GetComponent<NetworkObject>().m_CurrentLV.Value * 30) + (player.GetComponent<NetworkObject>().m_CurrentLV.Value * player.GetComponent<NetworkObject>().m_CurrentLV.Value)),
             player.GetComponent<NetworkObject>().m_CurrentEXP.Value,
             EXPBar,
             ExpBarSize
@@ -72,6 +72,10 @@ public class PlayerHUD : MonoBehaviour
         {
             player.GetComponent<oCreature>().CurrentHP.AddEvent(HP_bar);
             player.GetComponent<NetworkObject>().m_CurrentHP.OtherEvent(HP_bar);
+            player.GetComponent<NetworkObject>().m_CurrentHPLim.OtherEvent(HP_bar);
+            player.GetComponent<NetworkObject>().m_CurrentMPLim.OtherEvent(MP_bar);
+            player.GetComponent<NetworkObject>().m_CurrentHPLim.AddEvent(HP_bar);
+            player.GetComponent<NetworkObject>().m_CurrentMPLim.AddEvent(MP_bar);
             player.GetComponent<NetworkObject>().m_CurrentMP.AddEvent(MP_bar);
             player.GetComponent<NetworkObject>().m_CurrentEXP.AddEvent(EXP_bar);
             player.GetComponent<NetworkObject>().m_CurrentMP.OtherEvent(MP_bar);

@@ -53,8 +53,10 @@ public class OtherMonster : MonoBehaviour
             _isDead = true;
             GetComponent<MonsterManager>().SetMonsterDead();
         }
-        else if(_isDead)
+        else if(_isDead && (GetComponent<oCreature>().CurrentHP.Value > 0))
         {
+            Debug.Log("monster regen!\n(monster HP : "+ GetComponent<oCreature>().CurrentHP.Value + ")");
+            
             _isDead = false;
             GetComponent<MonsterManager>().SetMonster();
         }
