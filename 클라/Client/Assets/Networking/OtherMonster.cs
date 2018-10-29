@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using FlatBuffers;
 
 
-public class OtherMonster : MonoBehaviour
+public class OtherMonster : SendStateManager
 {
     public bool _isDead = false;
 
@@ -24,6 +25,12 @@ public class OtherMonster : MonoBehaviour
     public void PosUpdate(Monster mon)
     {
         Vec3 pos = mon.Pos.Value;
+        if (_isDead)
+        {
+            transform.position.Set(pos.X, pos.Y, pos.Z);
+            return;
+        }
+        
         End.Set(pos.X,pos.Y,pos.Z);
 
         lookpos.Set( pos.X, transform.position.y, pos.Z);
@@ -42,8 +49,17 @@ public class OtherMonster : MonoBehaviour
 
         GetComponent<oCreature>().CurrentHP.AddEvent(() =>
         {
-            netMonsterStat.Updater(gameObject);
+            //netMonsterStat.Updater(gameObject);
         });
+    }
+
+    public override void SendDamage(int damage)
+    {
+        int mid = GetComponent<oNetworkIdentity>().id;
+        FlatBufferBuilder fbb = new FlatBufferBuilder(1);
+        fbb.Finish(MonsterStat.CreateMonsterStat
+        (fbb, Class.MonsterStat, -damage, 0, mid).Value);
+        TCPClient.Instance.Send(fbb.SizedByteArray());
     }
 
     void isDead()

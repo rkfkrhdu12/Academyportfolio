@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FlatBuffers;
 
 public class OtherPlayer : oNetworkManager
 {
@@ -15,11 +16,16 @@ public class OtherPlayer : oNetworkManager
 
     public void SetStatEvent()
     {
-        GetComponent<oCreature>().CurrentHP.AddEvent(() =>
-        {
-            netplayerStat.Updater(gameObject);
-        });
+
+
+        //netplayerStat.Updater(gameObject);
+
     }
+
+
+
+
+
 
     public void UpdateOtherObj(Player tr)
     {

@@ -13,7 +13,7 @@ public class SATManager : MonoBehaviour {
             var Player = BPlayer.MainPlayer.GetComponent<NetworkObject>();
             mCollider.GetComponent<SkillProcess>().EffectName = EffectName;
             Collider.gameObject.GetComponent<oCreature>().CurrentHP.Value -= Player.Final_ATK + Damage;
-
+            Collider.gameObject.GetComponent<SendStateManager>().SendDamage(Player.Final_ATK + Damage);
         };
         core.SetActive(true);
     }

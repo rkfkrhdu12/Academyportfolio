@@ -24,9 +24,8 @@ public class Stuff : BItem
 {
     public override void process()
     {
-        BPlayer.MainPlayer.GetComponent<NetworkObject>().m_CurrentHP.Value += Hp;
+        BPlayer.MainPlayer.GetComponent<SendStateManager>().SendDamage(-Hp);
         Number.Value -= 1;
-
         var fbb = new FlatBufferBuilder(1);
         fbb.Finish(fItem.CreatefItem(fbb, Class.fItem, id, fbb.CreateString(""), 0, 0, 0, 0, 0, 0, 0, 0, 0, 1).Value);
         TCPClient.Instance.Send(fbb.SizedByteArray());

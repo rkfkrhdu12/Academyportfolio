@@ -35,21 +35,4 @@ public class oCreature : oObject
     {
         CurrentHP.NoEventSet(stat.HP);
     }
-
-
-    public void Hit(int HitDamage, Collider col)
-    {
-        CurrentHP.Value -= HitDamage;
-        Debug.Log("체력 " + HitDamage + "만큼 감소.\n남은 체력 : " + CurrentHP.Value);
-        //ShowBloodEffect(col);
-    }
-
-    public void SpReduction(int Value)
-    {
-        CurrentSP -= Value;
-        Debug.Log("스테미나 " + Value + "만큼 감소.\n남은 스테미나 : " + CurrentSP);
-
-    }
-
-
 }

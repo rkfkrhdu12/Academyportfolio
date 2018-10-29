@@ -42,7 +42,7 @@ public class MonsterAttackManager : MonoBehaviour
             {
                 if (data.gameObject == NetworkObject.mainPlayer)
                 {
-                    data.gameObject.GetComponent<NetworkObject>().m_CurrentHP.Value -= 10;
+                    data.gameObject.GetComponent<SendStateManager>().SendDamage(10);
                 }
             };
             skill.EndCallBack = () =>

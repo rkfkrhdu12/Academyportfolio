@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OtherPlayers : MonoBehaviour {
+public class OtherPlayers : MonoBehaviour
+{
 
     public static OtherPlayers instance;
 
@@ -113,6 +114,7 @@ public class OtherPlayers : MonoBehaviour {
                 if (OPlayers[_PlayerStat.ID].GetComponent<oCreature>() == null)
                 {
                     OPlayers[_PlayerStat.ID].gameObject.AddComponent<oCreature>();
+                    OPlayers[_PlayerStat.ID].gameObject.AddComponent<SendStateManager>();
                     OPlayers[_PlayerStat.ID].gameObject.GetComponent<OtherPlayer>().SetStatEvent();
                 }
 
