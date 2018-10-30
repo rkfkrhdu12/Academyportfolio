@@ -68,6 +68,7 @@
     <Compile Include="Assets\03.Prefabs\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
     <Compile Include="Assets\03.Prefabs\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
     <Compile Include="Assets\Class\oClass.cs" />
+    <Compile Include="Assets\DamageText.cs" />
     <Compile Include="Assets\DateManager.cs" />
     <Compile Include="Assets\flatbuffer\ByteBuffer.cs" />
     <Compile Include="Assets\flatbuffer\ByteBufferUtil.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Assets\Networking\CreateNetworkObject.cs" />
     <Compile Include="Assets\Networking\flat\Base.cs" />
     <Compile Include="Assets\Networking\flat\Class.cs" />
+    <Compile Include="Assets\Networking\flat\fDamage.cs" />
     <Compile Include="Assets\Networking\flat\fEquipSlots.cs" />
     <Compile Include="Assets\Networking\flat\fheader.cs" />
     <Compile Include="Assets\Networking\flat\fInventory.cs" />
@@ -211,8 +213,10 @@
     <Compile Include="Assets\prefab\NetPlayer\UI\PlayerHUD.cs" />
     <Compile Include="Assets\ResourcesLoader.cs" />
     <Compile Include="Assets\SATManager.cs" />
+    <Compile Include="Assets\SelfDestroy.cs" />
     <Compile Include="Assets\SendStateManager.cs" />
     <Compile Include="Assets\ServerSpeedTest\SpeedTest_Send.cs" />
+    <Compile Include="Assets\ShowDamage.cs" />
     <Compile Include="Assets\Skill\SkillProcess.cs" />
     <Compile Include="Assets\StateWinManager.cs" />
     <Compile Include="Assets\TriggerEvent.cs" />

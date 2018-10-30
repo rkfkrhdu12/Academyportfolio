@@ -12,7 +12,7 @@ public class UI_Manager : MonoBehaviour {
         {
             if (Input.GetMouseButtonDown(1))
             {
-                if(MouseR_Callback != null) MouseR_Callback();
+                MouseR_Callback?.Invoke();
             }
         }
 	}
