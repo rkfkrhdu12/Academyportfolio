@@ -20,10 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4307455817971098}
   - component: {fileID: 23407168025889530}
-  - component: {fileID: 102778069688285084}
-  - component: {fileID: 114695001922855860}
   - component: {fileID: 114397022206858828}
   - component: {fileID: 114778156645949060}
+  - component: {fileID: 132767929091309320}
   m_Layer: 0
   m_Name: DamageText
   m_TagString: Untagged
@@ -79,27 +78,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!102 &102778069688285084
-TextMesh:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742603751685026}
-  m_Text: 
-  m_OffsetZ: -0.5
-  m_CharacterSize: 0.3
-  m_LineSpacing: 1
-  m_Anchor: 4
-  m_Alignment: 1
-  m_TabSize: 4
-  m_FontSize: 30
-  m_FontStyle: 0
-  m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Color:
-    serializedVersion: 2
-    rgba: 4294967295
 --- !u!114 &114397022206858828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,18 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c47df535af09a943afbc2eb0a90c9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t: 5
---- !u!114 &114695001922855860
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742603751685026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 410188150c457f94a86c590154f6feff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  t: 0.5
 --- !u!114 &114778156645949060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,3 +101,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7be8e1d3d09a64a8e363e26f006c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!132 &132767929091309320
+GUIText:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1742603751685026}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: 
+  m_Anchor: 4
+  m_Alignment: 1
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 40
+  m_FontStyle: 2
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_PixelCorrect: 1
+  m_RichText: 1

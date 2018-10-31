@@ -21,6 +21,6 @@ public class DamageText : MonoBehaviour {
 
     private void Update()
     {
-        //transform.Translate(0,5*Time.deltaTime,0);
+        transform.Translate(0, 0.5f * Time.deltaTime, 0);
     }
 }
