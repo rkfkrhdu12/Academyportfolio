@@ -23,7 +23,7 @@ public class OtherPlayer : oNetworkManager
     }
 
 
-
+    
 
 
 

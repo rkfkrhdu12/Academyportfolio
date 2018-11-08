@@ -9,6 +9,8 @@ public class OtherMonster : SendStateManager
 {
     public bool _isDead = false;
 
+    bool bMonGen = false;
+
 
     MovePosLerp LerpManager = new MovePosLerp();
 
@@ -25,17 +27,18 @@ public class OtherMonster : SendStateManager
     public void PosUpdate(Monster mon)
     {
         Vec3 pos = mon.Pos.Value;
-        if (_isDead)
-        {
-            transform.position.Set(pos.X, pos.Y, pos.Z);
-            return;
-        }
-        
         End.Set(pos.X,pos.Y,pos.Z);
+
+        if (bMonGen)
+        {
+            transform.position = End;
+            bMonGen = false;
+            GetComponent<MonsterManager>().SetMonster();
+        }
 
         lookpos.Set( pos.X, transform.position.y, pos.Z);
 
-        if (GetComponent<MonsterAttackManager>().AttackRange.activeSelf)
+        if (GetComponent<MonsterAttackManager>().AttackRange.activeSelf && !_isDead)
             GetComponentInChildren<Animator>().SetFloat("stat", mon.Ani);
 
         dirToTarget = lookpos - transform.position;
@@ -70,11 +73,9 @@ public class OtherMonster : SendStateManager
             GetComponent<MonsterManager>().SetMonsterDead();
         }
         else if(_isDead && (GetComponent<oCreature>().CurrentHP.Value > 0))
-        {
-            Debug.Log("monster regen!\n(monster HP : "+ GetComponent<oCreature>().CurrentHP.Value + ")");
-            
+        {   
             _isDead = false;
-            GetComponent<MonsterManager>().SetMonster();
+            bMonGen = true;
         }
     }
 
@@ -94,15 +95,19 @@ public class OtherMonster : SendStateManager
 
     void Update()
     {
-        LerpManager.SyncT += Time.deltaTime;
-        
+        if (!bMonGen)
+        {
+            LerpManager.SyncT += Time.deltaTime;
 
-        transform.position = Vector3.Lerp(StartPos, End, LerpManager.LerpT());
-        
-        Vector3 look = Vector3.Slerp(transform.forward, dirToTarget.normalized, LerpManager.LerpT());
 
-        if (transform.position != lookpos) {
-            transform.rotation = Quaternion.LookRotation(look, Vector3.up);
+            transform.position = Vector3.Lerp(StartPos, End, LerpManager.LerpT());
+
+            Vector3 look = Vector3.Slerp(transform.forward, dirToTarget.normalized, LerpManager.LerpT());
+
+            if (transform.position != lookpos)
+            {
+                transform.rotation = Quaternion.LookRotation(look, Vector3.up);
+            }
         }
     }
 }
