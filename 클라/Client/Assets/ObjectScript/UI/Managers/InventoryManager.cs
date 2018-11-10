@@ -18,9 +18,9 @@ public class InventoryManager : SlotsManager
 
     private void Start()
     {
-        NetDataReader.GetInstace().Reder[Class.fItem] = (data) => {
+        NetDataReader.GetInstace().Reder[Class.fItem] = (data) => 
+        {
             var item = fItem.GetRootAsfItem(data.ByteBuffer);
-
 
             AItem aItem = new AItem();
 
