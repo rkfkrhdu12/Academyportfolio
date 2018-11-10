@@ -9,8 +9,9 @@ public class EquipSlot : MonoBehaviour
 
     private void Start()
     {
-        NetDataReader.GetInstace().Reder[Class.fEquipSlots] = (data) =>
+        NetDataReader.GetInstace().Reder[Class.fEquip] = (data) =>
         {
+            Debug.Log("get equip data!");
             var mitem = fItem.GetRootAsfItem(data.ByteBuffer);
 
             Add(new AItem().GetfItemT(mitem).Get(), mitem.Val8);
@@ -31,7 +32,7 @@ public class EquipSlot : MonoBehaviour
     void UpdateSlot()
     {
         int n = 0;
-        int[] slot = new int[mslot.Count];
+        int[] slot = new int[4];
         foreach (var i in mslot)
         {
             slot[n] = 0;
