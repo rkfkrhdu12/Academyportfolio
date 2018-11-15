@@ -2954,6 +2954,16 @@ Prefab:
       propertyPath: pingManager
       value: 
       objectReference: {fileID: 1940311020}
+    - target: {fileID: 114581248403898578, guid: f88391a2fab4e3844a51c5d96c23326a,
+        type: 2}
+      propertyPath: autoID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114581248403898578, guid: f88391a2fab4e3844a51c5d96c23326a,
+        type: 2}
+      propertyPath: autoPASS
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f88391a2fab4e3844a51c5d96c23326a, type: 2}
   m_IsPrefabAsset: 0
@@ -5542,6 +5552,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mDamageText: {fileID: 1742603751685026, guid: 42650450df5d5b24fb329d15e24d6e4b,
     type: 2}
+--- !u!114 &826549483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 826549481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2aa4d764e35fed41a2acf4f629ff87d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &830433966
 GameObject:
   m_ObjectHideFlags: 0

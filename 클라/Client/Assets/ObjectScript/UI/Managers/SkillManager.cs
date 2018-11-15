@@ -27,7 +27,7 @@ public class SkillManager : MonoBehaviour
             skill[i].AttackData.StartTime = 0.3f;
             skill[i].AttackData.EndTime = 0.7f;
             skill[i].AttackData.AttackTime = 0.25f;
-            skill[i].AttackData.Damage = 10;
+            skill[i].AttackData.Damage = 1;
             skill[i++].AttackData.EffectName = "Blood";
         }
 
@@ -44,7 +44,7 @@ public class SkillManager : MonoBehaviour
             skill[i].AttackData.StartTime = 0.3f;
             skill[i].AttackData.EndTime = 0.79f;
             skill[i].AttackData.AttackTime = 0.25f;
-            skill[i].AttackData.Damage = 20;
+            skill[i].AttackData.Damage = 5;
             skill[i++].AttackData.EffectName = "Blood";
         }
         
@@ -93,6 +93,15 @@ public class SkillManager : MonoBehaviour
 
 
 
-        KeySettingManager.AddKey(skill2);
+        //KeySettingManager.AddKey(skill2, KeyCode.K);
+
+
+
+        EventManager.Event["KeySlotStart"] = ()=> 
+        {
+            KeySettingManager.AddKey(skill2,KeyCode.K);
+            KeySettingManager.AddKey(skill3, KeyCode.I);
+            KeySettingManager.AddKey(skill4, KeyCode.E);
+        };
     }
 }

@@ -13,14 +13,31 @@ public class KeySettingManager : SlotsManager
 
     public Action[] MouseButton = new Action[2];
 
+    bool OnKey = true;
+
     private void Awake()
     {
         instance = this;
     }
 
-    public static void AddKey(PlayerSystem act)
+    public static void AddKey(PlayerSystem act, KeyCode key, int Mouse = -1)
     {
-        instance.Add(act);
+        foreach (var slot in instance.Slots)
+        {
+            if (Mouse == -1)
+            {
+                if (key == slot.Value.GetComponent<KeySlot>().key)
+                    slot.Value.Item = act;
+                
+            }
+            else
+            {
+                if (slot.Value.GetComponent<KeySlot>().Mouse)
+                    if (slot.Value.GetComponent<KeySlot>().MousePoint == Mouse)
+                        slot.Value.Item = act;
+
+            }
+        }
     }
 
     private void Start()
@@ -35,6 +52,7 @@ public class KeySettingManager : SlotsManager
 
     void Update()
     {
+        if (OnKey) { OnKey = false; EventManager.Event["KeySlotStart"](); }
         foreach (var i in KeyEvent)
         {
             if (Input.GetKeyDown(i.Key))
@@ -52,7 +70,7 @@ public class KeySettingManager : SlotsManager
         }
         foreach (var i in mRemoveList)
         {
-            MouseButton[i] = ()=> { };
+            MouseButton[i] = () => { };
         }
         RemoveList.Clear();
         mRemoveList.Clear();

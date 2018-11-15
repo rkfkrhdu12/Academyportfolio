@@ -84,8 +84,6 @@ public class OtherPlayers : MonoBehaviour
             MainPlayer.GetComponent<NetworkObject>().CharacterName.NoEventSet(FirstPlayerData.Name);
             Vector3 v3 = new Vector3();
             v3.Set(pos.X, pos.Y, pos.Z);
-
-            Debug.Log(v3 +"\n"+ MainPlayer.transform.position);
         };
 
 
@@ -96,17 +94,23 @@ public class OtherPlayers : MonoBehaviour
 
         NetDataReader.GetInstace().Reder[Class.PlayerStat] = (data) => {
             var _PlayerStat = PlayerStat.GetRootAsPlayerStat(data.ByteBuffer);
-           
+            var player = MainPlayer.GetComponent<NetworkObject>();
+
             if (_PlayerStat.ID == MainPlayer.id)
             {
                 MainPlayer.GetComponent<oCreature>().Data_Update(_PlayerStat);
-                MainPlayer.GetComponent<NetworkObject>().m_CurrentHP.NoEventSet(_PlayerStat.HP);
-                MainPlayer.GetComponent<NetworkObject>().m_CurrentMP.NoEventSet(_PlayerStat.MP);
-                MainPlayer.GetComponent<NetworkObject>().m_CurrentHPLim.NoEventSet(_PlayerStat.HPLim);
-                MainPlayer.GetComponent<NetworkObject>().m_CurrentMPLim.NoEventSet(_PlayerStat.MPLim);
-                MainPlayer.GetComponent<NetworkObject>().m_CurrentEXP.NoEventSet(_PlayerStat.EXP);
-                MainPlayer.GetComponent<NetworkObject>().m_CurrentATK.NoEventSet(_PlayerStat.Attack);
-                MainPlayer.GetComponent<NetworkObject>().m_CurrentLV.NoEventSet(_PlayerStat.LV);
+                player.m_CurrentHP.NoEventSet(_PlayerStat.HP);
+                player.m_CurrentMP.NoEventSet(_PlayerStat.MP);
+                player.m_CurrentHPLim.NoEventSet(_PlayerStat.HPLim);
+                player.m_CurrentMPLim.NoEventSet(_PlayerStat.MPLim);
+                player.m_CurrentEXP.NoEventSet(_PlayerStat.EXP);
+                player.m_CurrentATK.NoEventSet(_PlayerStat.Attack);
+                if (_PlayerStat.LV > player.m_CurrentLV.Value)
+                {
+                    IG_EffectManager.Show(player.gameObject.transform.position, "LVUP");
+                }
+                player.m_CurrentLV.NoEventSet(_PlayerStat.LV);
+
 
             }
             else if(OPlayers.ContainsKey(_PlayerStat.ID))

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class KeySlot : Slot {
 
-    [SerializeField] KeyCode key;
-    [SerializeField] bool Mouse;
-    [SerializeField] int MousePoint;
+    public KeyCode key;
+    public bool Mouse;
+    public int MousePoint;
 
 
     KeySettingManager settingManager;

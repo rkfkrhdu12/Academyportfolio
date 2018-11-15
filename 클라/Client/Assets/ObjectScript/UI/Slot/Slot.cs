@@ -48,11 +48,10 @@ public class Slot : MonoBehaviour
         SlotStart();
     }
 
+    
+
     public void SetItemNumber()
     {
-        Debug.Log("Item add!"+gameObject.name);
-
-
         if (number == 0)
         {
             Item = null;
