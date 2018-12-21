@@ -20,7 +20,12 @@ public class OtherMonster : SendStateManager
     Vector3 lookpos = Vector3.zero;
 
     Vector3 dirToTarget;
-    NetStatUpdater netMonsterStat = new NetStatUpdater();
+
+    float _gravityAccel = -20;
+    float _gravityPower = -9.8f;
+
+
+    //NetStatUpdater netMonsterStat = new NetStatUpdater();
 
     //bool TargetInRange = true;
 
@@ -61,7 +66,7 @@ public class OtherMonster : SendStateManager
         int mid = GetComponent<oNetworkIdentity>().id;
         FlatBufferBuilder fbb = new FlatBufferBuilder(1);
         fbb.Finish(MonsterStat.CreateMonsterStat
-        (fbb, Class.MonsterStat, -damage, 0, mid).Value);
+        (fbb, Class.MonsterStat, fbb.CreateString(""), -damage, 0, mid).Value);
         TCPClient.Instance.Send(fbb.SizedByteArray());
     }
 
@@ -69,11 +74,13 @@ public class OtherMonster : SendStateManager
     {
         if((GetComponent<oCreature>().CurrentHP.Value < 1) && !_isDead)
         {
+            GetComponent<oCreature>().isDead = true;
             _isDead = true;
             GetComponent<MonsterManager>().SetMonsterDead();
         }
         else if(_isDead && (GetComponent<oCreature>().CurrentHP.Value > 0))
-        {   
+        {
+            GetComponent<oCreature>().isDead = false;
             _isDead = false;
             bMonGen = true;
         }
@@ -99,8 +106,21 @@ public class OtherMonster : SendStateManager
         {
             LerpManager.SyncT += Time.deltaTime;
 
+            _gravityPower += _gravityAccel * Time.deltaTime;
+            if(GetComponent<CharacterController>().enabled)
+                GetComponent<CharacterController>().Move(new Vector3(0, _gravityPower, 0) * Time.deltaTime);
+            //GetComponent<Rigidbody>().MovePosition(Vector3.Lerp(StartPos, End, LerpManager.LerpT()));
+        }
+    }
 
-            transform.position = Vector3.Lerp(StartPos, End, LerpManager.LerpT());
+
+    private void LateUpdate()
+    {
+        if (!bMonGen && !_isDead)
+        {
+            var newpos = Vector3.Lerp(StartPos, End, LerpManager.LerpT());
+            if (!float.IsNaN(newpos.x))
+                transform.position = newpos;
 
             Vector3 look = Vector3.Slerp(transform.forward, dirToTarget.normalized, LerpManager.LerpT());
 

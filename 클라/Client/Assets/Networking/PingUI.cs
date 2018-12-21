@@ -4,10 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PingUI : MonoBehaviour {
+
+
+    public static int ping;
+
+
     void Start()
     {
         GetPing.iping.AddEvent(pingShow);
         GetPing.MaxPing.AddEvent(pingShow);
+    }
+
+
+    private void Update()
+    {
+        GetPing.iping.Value = ping;
     }
 
 

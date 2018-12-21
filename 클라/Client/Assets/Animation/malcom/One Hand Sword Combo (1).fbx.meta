@@ -172,7 +172,7 @@ ModelImporter:
     - serializedVersion: 16
       name: mixamo.com
       takeName: mixamo.com
-      firstFrame: 0
+      firstFrame: 19
       lastFrame: 136
       wrapMode: 0
       orientationOffsetY: 0
@@ -193,7 +193,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.22676581
+      - time: 0.10075612
         functionName: SATStart
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 5bee4b2bbda3f5f4299faf151c86ef3c,
@@ -201,7 +201,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 15
         messageOptions: 0
-      - time: 0.25263837
+      - time: 0.12662868
         functionName: SATEnd
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 5bee4b2bbda3f5f4299faf151c86ef3c,

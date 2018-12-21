@@ -9,6 +9,8 @@ public class oCreature : oObject
 {
     public ReAct<int> CurrentHP = new ReAct<int>();
 
+    public bool isDead = false;
+
     public int MaximumHP;
 
     public int CurrentSP;

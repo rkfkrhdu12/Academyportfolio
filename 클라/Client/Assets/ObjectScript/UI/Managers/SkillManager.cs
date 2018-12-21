@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
+    BSkill[] skill = new BSkill[3];
+    SystemSkill skill2 = new SystemSkill();
+    SystemSkill skill3 = new SystemSkill();
+    SystemSkill skill4 = new SystemSkill();
+    int i = 0;
+
     public void Start()
     {
-        BSkill[] skill = new BSkill[2];
-        SystemSkill skill2 = new SystemSkill();
-        SystemSkill skill3 = new SystemSkill();
-        SystemSkill skill4 = new SystemSkill();
-
-
-        int i = 0;
 
         // 평타.
         {
@@ -42,18 +41,39 @@ public class SkillManager : MonoBehaviour
             skill[i].AttackData.AniCode = 0.2f;
             skill[i].AttackData.isTargetOnce = true;
             skill[i].AttackData.StartTime = 0.3f;
-            skill[i].AttackData.EndTime = 0.79f;
+            skill[i].AttackData.EndTime = 0.13f;
             skill[i].AttackData.AttackTime = 0.25f;
             skill[i].AttackData.Damage = 5;
             skill[i++].AttackData.EffectName = "Blood";
         }
-        
+
+        // 검 평타.
+        {
+            skill[i] = new BSkill();
+            skill[i]._name = "회전베기";
+            skill[i]._info = "회전하며 벤다.";
+            skill[i].icon = Resources.Load<Sprite>("swordblow2");
+
+            skill[i].AttackData = new AttackObj();
+            skill[i].AttackData.AniCode = 0.3f;
+            skill[i].AttackData.isTargetOnce = true;
+            skill[i].AttackData.StartTime = 0.3f;
+            skill[i].AttackData.EndTime = 0.33f;
+            skill[i].AttackData.AttackTime = 0.25f;
+            skill[i].AttackData.Damage = 20;
+            skill[i++].AttackData.EffectName = "Blood";
+        }
+
+
+
+
+
 
 
         skill2._name = "키셋팅 창 열기";
         skill2._info = "키셋팅 창을 열어재낀다.";
         skill2.icon = Resources.Load<Sprite>("keyset");
-        
+
         skill2.SkillData = new AttackObj();
         skill2.SkillData.EndCallBack = () =>
         {
@@ -83,25 +103,41 @@ public class SkillManager : MonoBehaviour
             win.SetActive(!win.activeSelf);
         };
 
+        for (int j = 0; j < 2; j++)
+            SkillsManager.mskills.Add(skill[j]);
+        SkillsManager.mskills.Add(skill2);
+        SkillsManager.mskills.Add(skill3);
+        SkillsManager.mskills.Add(skill4);
+
+        SkillsManager.mskills.Add(skill[2]);
+        SkillsManager.SetSkillCode();
+
+
+
+
+
+
+
+
+
+
+        EventManager.Event["KeySlotStart"] = () =>
+        {
+            //KeySettingManager.AddKey(skill2, KeyCode.K);
+            //KeySettingManager.AddKey(skill3, KeyCode.I);
+            //KeySettingManager.AddKey(skill4, KeyCode.E);
+        };
+    }
+
+    public void GetSkill()
+    {
+        SkillsManager.AddSkill(skill[2]);
+        /*
         for (int j = 0; j < i; j++)
             SkillsManager.AddSkill(skill[j]);
         SkillsManager.AddSkill(skill2);
         SkillsManager.AddSkill(skill3);
         SkillsManager.AddSkill(skill4);
-
-
-
-
-
-        //KeySettingManager.AddKey(skill2, KeyCode.K);
-
-
-
-        EventManager.Event["KeySlotStart"] = ()=> 
-        {
-            KeySettingManager.AddKey(skill2,KeyCode.K);
-            KeySettingManager.AddKey(skill3, KeyCode.I);
-            KeySettingManager.AddKey(skill4, KeyCode.E);
-        };
+        */
     }
 }

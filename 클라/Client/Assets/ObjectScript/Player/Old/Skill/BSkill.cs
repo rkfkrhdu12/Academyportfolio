@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BSkill : PlayerSystem
 {
+    public int code;
     public AttackObj AttackData { get; set; }
 
     public override void process()

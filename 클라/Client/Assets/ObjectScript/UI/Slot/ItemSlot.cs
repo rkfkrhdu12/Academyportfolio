@@ -20,6 +20,8 @@ public class ItemSlot : Slot
         if (TargetSlot && TargetSlot.type == SlotType.Key)
         {
             TargetSlot.Item = Item;
+            ((KeySlot)TargetSlot).mItemSlotType = type;
+            KeySettingManager.KeySlotUpdate();
         }
         base.Equipment();
     }

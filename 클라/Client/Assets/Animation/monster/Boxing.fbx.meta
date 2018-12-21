@@ -132,7 +132,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.28067484
+        functionName: MHA_Right
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 0a6ac62637654c34cbb349ce559b6e03,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.44677418
+        functionName: MHA_RightEND
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 0a6ac62637654c34cbb349ce559b6e03,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

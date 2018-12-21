@@ -15,7 +15,7 @@ public class AttackObj
     public float EndTime;
     public float AttackTime;
     public float TimeT = 0f;
-    public string EffectName ="none";
+    public string EffectName = "none";
 
     public float ColStartTime = 0.1f;
 
@@ -26,7 +26,7 @@ public class AttackObj
     public float CoolTime;
 
     public Action EndCallBack;
-    public Action<Collider, Collider> HitCallBack = (c,c2) => { };
+    public Action<Collider, Collider> HitCallBack = (c, c2) => { };
 
     public void setCol(bool _s)
     {
@@ -52,6 +52,7 @@ public class AttackerManager : MonoBehaviour
 {
     Dictionary<AttackObj, Action> objs = new Dictionary<AttackObj, Action>();
     Queue<AttackObj> RemoveManager = new Queue<AttackObj>();
+
 
 
     public GameObject Sowrd;
@@ -83,12 +84,16 @@ public class AttackerManager : MonoBehaviour
 
     public void SATStart(int damage)
     {
-        Sowrd.GetComponent<SATManager>().AttackStart(damage);
+        if (GetComponent<oNetworkManager>())
+            Sowrd.GetComponent<SATManager>().AttackStart(damage);
     }
     public void SATEnd()
     {
-        Sowrd.GetComponent<SATManager>().AttackEnd();
+        if (GetComponent<oNetworkManager>())
+            Sowrd.GetComponent<SATManager>().AttackEnd();
     }
+
+
 
     void Update()
     {

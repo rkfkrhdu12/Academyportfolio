@@ -8,11 +8,21 @@ public class OtherPlayers : MonoBehaviour
     public static OtherPlayers instance;
 
     public GameObject PlayerPrifab;
-    Dictionary<int, OtherPlayer> OPlayers = new Dictionary<int, OtherPlayer>();
+    public Dictionary<int, OtherPlayer> OPlayers = new Dictionary<int, OtherPlayer>();
 
     private void Awake()
     {
         instance = this;
+    }
+
+    public string GetName(int id)
+    {
+        if (BPlayer.MainPlayer.GetComponent<oNetworkIdentity>().id == id)
+        {
+            return "나";
+        }
+
+        return OPlayers[id].gameObject.name;
     }
 
     void Start () {
@@ -89,7 +99,19 @@ public class OtherPlayers : MonoBehaviour
 
 
 
-
+        NetDataReader.GetInstace().Reder[Class.fEquipSome] = (data) =>
+        {
+            var equipSome = fEquipSome.GetRootAsfEquipSome(data.ByteBuffer);
+            Debug.Log(MainPlayer.GetComponent<oNetworkIdentity>().id +":"+ equipSome.PID + ":"+ equipSome.SlotNum + ":" + equipSome.ObjNum);
+            if (MainPlayer.GetComponent<oNetworkIdentity>().id == equipSome.PID)
+            {
+                MainPlayer.GetComponent<EquipManager>().Equip(equipSome.ObjNum, equipSome.SlotNum);
+            }
+            else
+            {
+                OPlayers[equipSome.PID].GetComponent<EquipManager>().Equip(equipSome.ObjNum,-1);
+            }
+        };
 
 
         NetDataReader.GetInstace().Reder[Class.PlayerStat] = (data) => {
@@ -120,6 +142,7 @@ public class OtherPlayers : MonoBehaviour
                     OPlayers[_PlayerStat.ID].gameObject.AddComponent<oCreature>();
                     OPlayers[_PlayerStat.ID].gameObject.AddComponent<SendStateManager>();
                     OPlayers[_PlayerStat.ID].gameObject.GetComponent<OtherPlayer>().SetStatEvent();
+                    OPlayers[_PlayerStat.ID].gameObject.name = _PlayerStat.NikName;
                 }
 
                 OPlayers[_PlayerStat.ID].gameObject.GetComponent<oCreature>().Data_Update(_PlayerStat);

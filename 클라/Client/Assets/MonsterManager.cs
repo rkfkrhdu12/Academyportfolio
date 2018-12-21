@@ -16,7 +16,7 @@ public class MonsterManager : MonoBehaviour {
         GetComponent<oCreature>().enabled = false;
         GetComponent<MonsterAttackManager>().enabled = false;
         GetComponent<AttackerManager>().enabled = false;
-        GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<CharacterController>().enabled = false;
     }
 
     public void SetMonster()
@@ -25,7 +25,9 @@ public class MonsterManager : MonoBehaviour {
         body2.SetActive(true);
         GetComponent<oCreature>().enabled = true;
         GetComponent<MonsterAttackManager>().enabled = true;
+        GetComponent<MonsterAttackManager>().isAttackAble = true;
+        GetComponent<MonsterAttackManager>().AttackRange.SetActive(true);
         GetComponent<AttackerManager>().enabled = true;
-        GetComponent<CapsuleCollider>().enabled = true;
+        GetComponent<CharacterController>().enabled = true;
     }
 }

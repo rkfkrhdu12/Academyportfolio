@@ -7,12 +7,19 @@ public class EquipSlot : MonoBehaviour
 {
     List<ItemSlot> mslot = new List<ItemSlot>();
 
+    public static EquipSlot instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         NetDataReader.GetInstace().Reder[Class.fEquip] = (data) =>
         {
-            Debug.Log("get equip data!");
             var mitem = fItem.GetRootAsfItem(data.ByteBuffer);
+            Debug.Log("id : " + mitem.Id);
 
             Add(new AItem().GetfItemT(mitem).Get(), mitem.Val8);
         };
@@ -36,7 +43,7 @@ public class EquipSlot : MonoBehaviour
         foreach (var i in mslot)
         {
             slot[n] = 0;
-            if (!i.Empty) slot[n] = i.Item.id;
+            if (!i.Empty) { slot[n] = i.Item.id; Debug.Log("not Empty"+i.Item.id); }
             n++;
         }
         var fbb = new FlatBufferBuilder(1);

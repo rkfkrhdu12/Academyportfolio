@@ -11,7 +11,11 @@ public class SkillSlot : Slot {
     public override void Equipment()
     {
         if (TargetSlot && TargetSlot.type == SlotType.Key)
+        {
             TargetSlot.Item = Item;
+            ((KeySlot)TargetSlot).mItemSlotType = type;
+            KeySettingManager.KeySlotUpdate();
+        }
         base.Equipment();
     }
 }

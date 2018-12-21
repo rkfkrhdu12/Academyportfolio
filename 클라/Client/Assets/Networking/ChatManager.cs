@@ -3,77 +3,70 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using FlatBuffers;
 
-
-
-
-
-
-
-
-class chatListQueueData
-{
-    public chatListQueueData(Action<string> func, string data)
-    {
-        this.func = func;
-        this.data = data;
-    }
-
-
-    public Action<string> func;
-    public string data;
-}
 
 public class ChatManager : MonoBehaviour
 {
-    public static ChatManager instance;
+    public static bool IsChatOn = false;
 
-    LinkedList<chatListQueueData> chatListQueue = new LinkedList<chatListQueueData>();
+    [SerializeField] Text chatData_;
+    [SerializeField] GameObject chatUI_;
+    [SerializeField] InputField inf_;
 
-    [SerializeField]
-    Text chatList;
-
-
-    private void Awake()
+    public void Update()
     {
-        instance = this;
-    }
-
-    void OnChat(string text)
-    {
-        chatList.text += "\n" + text;
-    }
-
-
-    public void OnChatList(string text)
-    {
-        chatListQueue.AddLast(new chatListQueueData(OnChat, text));
-    }
-    public void OnChatList(Text text)
-    {
-        OnChatList(text.text);
-    }
-
-
-    private void Update()
-    {
-        var it = chatListQueue.First;
-        while (it != null)
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            var thisIt = it;
-            it = it.Next;
-            thisIt.Value.func(thisIt.Value.data);
-            chatListQueue.Remove(thisIt);
+            if (chatUI_.activeSelf)
+            {
+                if (chatData_.text.Length > 0)
+                {
+                    Send();
+                    inf_.text = "";
+                    inf_.ActivateInputField();
+                }
+                else
+                {
+                    IsChatOn = false;
+                    chatUI_.SetActive(false);
+                    inf_.text = "";
+                }
+            }
+            else
+            {
+                IsChatOn = true;
+                chatUI_.SetActive(true);
+                inf_.ActivateInputField();
+            }
+        }
+
+        if (chatUI_.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                inf_.text = "";
+                chatUI_.SetActive(false);
+            }
         }
     }
 
-    public void Send(string text)
+    private void Start()
     {
-        ClientManager.instance.Send(text);
+        NetDataReader.GetInstace().Reder[Class.fChat] = (data) =>
+        {
+            var chatD_ = fChat.GetRootAsfChat(data.ByteBuffer);
+            chatUI_.GetComponent<ChatView>().Addchat(OtherPlayers.instance.GetName(chatD_.PID)+ " : " +  chatD_.Str );
+        };
     }
 
-    public void Send(Text text)
+    public void Send()
     {
-        Send(text.text);
+        if (chatData_.text.Length > 0)
+        {
+            var fbb = new FlatBufferBuilder(1);
+            fbb.Finish(fChat.CreatefChat(fbb, Class.fChat, BPlayer.MainPlayer.GetComponent<oNetworkIdentity>().id,fbb.CreateString(chatData_.text)).Value);
+            TCPClient.Instance.Send(fbb.SizedByteArray());
+        }
     }
 }

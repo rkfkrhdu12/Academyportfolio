@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class SpeedTest_Send : oNetworkManager
 {
 
-    Coroutine r;
-    int i = 0;
+    //Coroutine r;
+    //int i = 0;
 
     public static int sm = 0;
     public static int rm = 0;
@@ -43,7 +43,7 @@ public class SpeedTest_Send : oNetworkManager
     {
         if (GUI.Button(new Rect(10, 10, 100, 20), "stop"))
         {
-            StopCoroutine(r);
+           // StopCoroutine(r);
         }
         if (GUI.Button(new Rect(120, 10, 100, 20), "start"))
         {

@@ -9,15 +9,12 @@ public class NetStatUpdater{
         int id = Obj.GetComponent<oNetworkIdentity>().id;
         oCreature oCreature = Obj.GetComponent<oCreature>();
 
-        Debug.Log("my ID : " + id + "playerHP : " + oCreature.CurrentHP.Value);
-
-
 
         var fbb = new FlatBufferBuilder(1);
 
         if (Obj.GetComponent<oNetworkIdentity>().type == oNetworkIdentity.ObjType.monster)
         {
-            fbb.Finish(MonsterStat.CreateMonsterStat(fbb,Class.MonsterStat,
+            fbb.Finish(MonsterStat.CreateMonsterStat(fbb, Class.MonsterStat, fbb.CreateString(""),
                 oCreature.CurrentHP.Value,0,
                 id
                 ).Value);

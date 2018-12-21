@@ -18,18 +18,18 @@ public class InventoryManager : SlotsManager
 
     private void Start()
     {
-        NetDataReader.GetInstace().Reder[Class.fItem] = (data) => 
+        NetDataReader.GetInstace().Reder[Class.fItem] = (data) =>
         {
             var item = fItem.GetRootAsfItem(data.ByteBuffer);
 
             AItem aItem = new AItem();
 
             AddItem(aItem.GetfItemT(item).Get(), item.Val8);
-            Debug.Log("item data recv name : " + item.Name);
         };
 
-        NetDataReader.GetInstace().Reder[Class.fInventory] = (data) => {
-            var iv = fInventory.GetRootAsfInventory(data.ByteBuffer);
+        NetDataReader.GetInstace().Reder[Class.fInventory] = (data) =>
+        {
+            //var iv = fInventory.GetRootAsfInventory(data.ByteBuffer);
         };
     }
 
@@ -52,12 +52,24 @@ public class InventoryManager : SlotsManager
         fbb.Finish(fItem.CreatefItem(fbb, Class.fItem, itemCode, fbb.CreateString(""), -1, 0, 0, 0, 0, 0, 0, 0, 0, count).Value);
         TCPClient.Instance.Send(fbb.SizedByteArray());
     }
-    
+
+    public static Slot FindSlotOfItemID(int ItemID)
+    {
+        foreach (var i in instance.Slots)
+        {
+            if (i.Value.Item != null)
+                if (i.Value.Item.id == ItemID)
+                {
+                    return i.Value;
+                }
+        }
+        return null;
+    }
 
     public static void SwapItem()
     {
         int[] inv = new int[30];
-        for(int i = 0; i < 30; i++)
+        for (int i = 0; i < 30; i++)
         {
             if (instance.Slots[i].Item != null)
             {
@@ -68,6 +80,12 @@ public class InventoryManager : SlotsManager
         var fbb = new FlatBufferBuilder(1);
         fbb.Finish(fInventory.CreatefInventory(fbb, Class.fInventory, fInventory.CreateSlotVector(fbb, inv)).Value);
         TCPClient.Instance.Send(fbb.SizedByteArray());
+    }
+
+
+    public static Slot GetInventoryItemSlot(int SlotNum)
+    {
+        return instance.Slots[SlotNum];
     }
 
     public static void AddItem(PlayerSystem Item, int S_n)

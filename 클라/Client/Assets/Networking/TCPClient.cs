@@ -11,6 +11,8 @@ using System.Collections.Concurrent;
 
 public class TCPClient : oNetworkManager
 {
+    public bool DEBUG_MODE = true;
+
     public static TCPClient Instance;
     public string Url;
     public int port;
@@ -22,7 +24,6 @@ public class TCPClient : oNetworkManager
 
     ConcurrentQueue<Action> actions = new ConcurrentQueue<Action>();
 
-    ConcurrentQueue<Action> pingQueue = new ConcurrentQueue<Action>();
 
 
     #region private members 	
@@ -74,7 +75,11 @@ public class TCPClient : oNetworkManager
     {
         try
         {
-            socketConnection = new TcpClient(Url, port);
+            if(DEBUG_MODE)
+                socketConnection = new TcpClient("Localhost", port);
+            else
+                socketConnection = new TcpClient(Url, port);
+
             socketConnection.NoDelay = true;
             Byte[] bytes = new Byte[1024];
             while (true)
@@ -93,7 +98,7 @@ public class TCPClient : oNetworkManager
                         var Data = ctype;
                         if (Data.CType == Class.ping)
                         {
-                            pingQueue.Enqueue(() => { NetDataReader.GetInstace().Reder[Data.CType](Data); });
+                            NetDataReader.GetInstace().Reder[Data.CType](Data);
                         }
                         else
                         {
@@ -117,19 +122,10 @@ public class TCPClient : oNetworkManager
         catch (SocketException socketException)
         {
             Debug.Log("Socket exception: " + socketException);
-            Debug.Log("서버가 닫혀있습니다.");
         }
     }
     private void Update()
     {
-        foreach (var i in pingQueue)
-        {
-            Action act;
-            pingQueue.TryDequeue(out act);
-            act();
-        }
-
-
         if (!actions.IsEmpty)
         {
             foreach (var i in actions)
@@ -169,10 +165,6 @@ public class TCPClient : oNetworkManager
                 Array.Copy(str, 0, clientMessageAsByteArray, size.Length, str.Length);
 
                 stream.Write(clientMessageAsByteArray, 0, clientMessageAsByteArray.Length);
-
-
-
-                Debug.Log("보낸 데이터 수 ---->");
             }
             else
             {

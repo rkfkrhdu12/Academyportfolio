@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class MaxStatManager : MonoBehaviour {
 
-    static int nomal_val = 100;
-    static float nomal_tan = 0.2f;
-
     public static int MAX_HP {
         get { return (int)((NetworkObject.mainPlayer.GetComponent<NetworkObject>().m_CurrentHPLim.Value)); }
         set { MAX_HP = value; }

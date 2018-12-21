@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FlatBuffers;
 
-public class KeySlot : Slot {
+public class KeySlot : Slot
+{
 
     public KeyCode key;
     public bool Mouse;
     public int MousePoint;
 
+    public SlotType mItemSlotType;
 
     KeySettingManager settingManager;
 
@@ -15,6 +18,7 @@ public class KeySlot : Slot {
     public override void OnMouseRCilck()
     {
         Item = null;
+        KeySettingManager.KeySlotUpdate();
     }
 
     public override void SlotStart()
@@ -24,11 +28,18 @@ public class KeySlot : Slot {
         type = SlotType.Key;
         item.Event += () =>
         {
-            if(Item == null) KeySet(null);
-            else             KeySet(Item.process);
+            if (Item == null) KeySet(null);
+            else KeySet(Item.process);
+
         };
     }
-    
+
+    public override void Equipment()
+    {
+        base.Equipment();
+        //if (TargetSlot)
+            KeySettingManager.KeySlotUpdate();
+    }
 
     void KeySet(System.Action act)
     {

@@ -14,12 +14,12 @@ public class StateWinManager : MonoBehaviour {
     [SerializeField] Text max_exp;
     [SerializeField] Text lv;
 
-    [SerializeField] Text name;
+    [SerializeField] Text mname;
 
     NetworkObject player;
 
     void Start () {
-        name.text = "none";
+        mname.text = "none";
         player = NetworkObject.mainPlayer.GetComponent<NetworkObject>();
         player.GetComponent<oCreature>().CurrentHP.AddEvent(HP_text);
         player.m_CurrentHP.OtherEvent(HP_text);
@@ -43,8 +43,7 @@ public class StateWinManager : MonoBehaviour {
 
         System.Action NameEv = ()=>
         {
-            Debug.Log(player.CharacterName.Value);
-            name.text = player.CharacterName.Value;
+            mname.text = player.CharacterName.Value;
         };
         player.CharacterName.AddEvent(NameEv);
         player.CharacterName.OtherEvent(NameEv);

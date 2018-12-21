@@ -7,10 +7,6 @@ public class BItem : PlayerSystem
 {
 
 }
-
-
-
-
 public class Weapon : BItem
 {
     public int OffensePower { get; set; }

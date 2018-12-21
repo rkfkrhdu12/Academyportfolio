@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 114581248403898578}
   - component: {fileID: 114302470916444164}
   - component: {fileID: 114608720924687456}
+  - component: {fileID: 114336773329893358}
+  - component: {fileID: 114602699353145634}
   m_Layer: 0
   m_Name: netClient
   m_TagString: Untagged
@@ -55,6 +57,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e379b08e5a24bb241bbf3f1f81ca1eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114336773329893358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1708068097926552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d72e4b0335ed141b65769469aa4cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDamageText: {fileID: 1742603751685026, guid: 42650450df5d5b24fb329d15e24d6e4b,
+    type: 2}
 --- !u!114 &114581248403898578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,8 +86,24 @@ MonoBehaviour:
   t:
   - {fileID: 0}
   - {fileID: 0}
+  suT:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   autoID: 1
   autoPASS: 1
+--- !u!114 &114602699353145634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1708068097926552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2aa4d764e35fed41a2acf4f629ff87d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114608720924687456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,7 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SendRate: 0.01
-  Url: localhost
-  port: 12588
+  DEBUG_MODE: 1
+  Url: 1.228.109.168
+  port: 5000
   MY_ID: 0
   pingManager: {fileID: 0}

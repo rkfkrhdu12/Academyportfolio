@@ -221,7 +221,6 @@ C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\
 C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\bin\Debug\Boo.Lang.PatternMatching.dll
 C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\bin\Debug\Boo.Lang.Useful.dll
 C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\bin\Debug\Unity.CecilTools.dll
-C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\bin\Debug\Assembly-CSharp.pdb
 C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\bin\Debug\UnityEngine.xml
 C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\bin\Debug\UnityEditor.xml
 C:\Users\anyc1\OneDrive\바탕 화면\myGit\Academyportfolio\클라\Client\Temp\bin\Debug\UnityEngine.AIModule.xml

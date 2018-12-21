@@ -6,7 +6,7 @@ using FlatBuffers;
 public class OtherPlayer : oNetworkManager
 {
     Quaternion Rot = new Quaternion();
-    NetStatUpdater netplayerStat = new NetStatUpdater();
+    //NetStatUpdater netplayerStat = new NetStatUpdater();
     MovePosLerp LerpManager = new MovePosLerp();
 
     Vector3 Vel = new Vector3();
